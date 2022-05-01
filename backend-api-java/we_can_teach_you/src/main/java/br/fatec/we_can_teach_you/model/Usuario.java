@@ -57,4 +57,10 @@ public abstract class Usuario extends AbstractEntity {
 
     @Column(name="cd_CPF", length=11)
     private String cpf;
+
+    @ManyToMany
+    @JoinTable(name = "UsuariosCategorias",
+        joinColumns=@JoinColumn(name="cd_Usuario"),
+        inverseJoinColumns=@JoinColumn(name="cd_Categoria") )
+    private List<Categoria> categorias;
 }
