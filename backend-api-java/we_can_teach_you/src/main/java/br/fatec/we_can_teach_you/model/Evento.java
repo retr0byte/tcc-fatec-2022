@@ -46,4 +46,9 @@ public class Evento extends AbstractEntity{
 	@Setter(onMethod = @__(@JsonProperty))
     @ManyToOne(fetch = FetchType.LAZY)
     private Atividade atividade;
+    
+    @Getter(onMethod = @__(@JsonIgnore))
+	@Setter(onMethod = @__(@JsonProperty))
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Aluno aluno;
 }

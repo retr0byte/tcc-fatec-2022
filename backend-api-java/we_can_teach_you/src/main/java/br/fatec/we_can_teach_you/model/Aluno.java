@@ -2,13 +2,11 @@ package br.fatec.we_can_teach_you.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -32,6 +30,4 @@ public class Aluno extends Usuario {
         inverseJoinColumns=@JoinColumn(name="cd_Categoria") )
     private List<Categoria> categorias;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Evento> eventos;
 }
