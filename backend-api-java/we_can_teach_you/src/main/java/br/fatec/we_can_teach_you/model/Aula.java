@@ -22,28 +22,28 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="Marcacoes")
-public class Marcacao extends AbstractEntity{
+@Table(name="Aulas")
+public class Aula extends AbstractEntity {
     private static final long serialVersionUID = 1L;
 
-    @Column(name="nm_Marcacao")
-    private String nome;
-
-    @Column(name="ds_Marcacao")
-    private String descricao;
+    @Column(name="ds_LinkReuniao")
+    private String linkReuniao;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="dt_Aula")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private Calendar dataMarcacao;
+    private Calendar dataAula;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="qt_DuracaoAula")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private Calendar duracaoAula;
 
-	@Getter(onMethod = @__(@JsonIgnore))
-	@Setter(onMethod = @__(@JsonProperty))
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Aluno aluno;
+    @Column(name="vl_Aula")
+    private Float valorAula;
 
     @Getter(onMethod = @__(@JsonIgnore))
     @Setter(onMethod = @__(@JsonProperty))
     @ManyToOne(fetch = FetchType.LAZY)
-    private Aula aula;
-    
+    private Categoria categoria;
 }
