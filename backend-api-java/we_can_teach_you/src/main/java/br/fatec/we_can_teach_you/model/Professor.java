@@ -1,8 +1,13 @@
 package br.fatec.we_can_teach_you.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +29,13 @@ public class Professor extends Usuario {
     @Column(name="ic_Liberado")
     private Boolean liberado;
 
+    @Column(name="ds_NivelEscolaridade")
+    private String nivelEscolaridade;
+
+    @ManyToMany
+    @JoinTable(name = "ProfessoresCategorias",
+        joinColumns=@JoinColumn(name="cd_Professor"),
+        inverseJoinColumns=@JoinColumn(name="cd_Categoria") )
+    private List<Categoria> categorias;
 
 }

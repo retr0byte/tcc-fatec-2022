@@ -1,7 +1,6 @@
 package br.fatec.we_can_teach_you.model;
 
 import java.util.Calendar;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +8,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,9 +36,6 @@ public abstract class Usuario extends AbstractEntity {
     @Column(name="ds_Senha", length=24)
     private String senha;
 
-    @Column(name="ds_NivelEscolaridade")
-    private String nivelEscolaridade;
-
     @Enumerated(EnumType.STRING)
     @Column(name="ds_Sexo")
     private Sexo sexo;
@@ -58,9 +51,4 @@ public abstract class Usuario extends AbstractEntity {
     @Column(name="cd_CPF", length=11)
     private String cpf;
 
-    @ManyToMany
-    @JoinTable(name = "UsuariosCategorias",
-        joinColumns=@JoinColumn(name="cd_Usuario"),
-        inverseJoinColumns=@JoinColumn(name="cd_Categoria") )
-    private List<Categoria> categorias;
 }
