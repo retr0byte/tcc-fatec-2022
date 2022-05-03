@@ -1,12 +1,9 @@
 package br.fatec.we_can_teach_you.model;
 
 import java.util.Calendar;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +32,4 @@ public class Atividade extends AbstractEntity{
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Calendar dataEntrega;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Evento> eventos;
 }
