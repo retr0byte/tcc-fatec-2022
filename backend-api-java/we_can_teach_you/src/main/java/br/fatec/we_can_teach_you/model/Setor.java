@@ -3,7 +3,7 @@ package br.fatec.we_can_teach_you.model;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public enum Setores {
+public enum Setor {
     ADM("ADMINISTRATIVO"),
     RH("RECURSOS HUMANOS"),
     FIN("FINANCEIRO"),

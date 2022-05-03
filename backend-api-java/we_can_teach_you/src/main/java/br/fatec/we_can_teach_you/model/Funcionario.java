@@ -30,7 +30,7 @@ public class Funcionario extends Usuario {
 
     @Enumerated(EnumType.STRING)
     @Column(name="ds_Setor")
-    private Setores setor;
+    private Setor setor;
 
     @Getter(onMethod = @__(@JsonIgnore))
     @Setter(onMethod = @__(@JsonProperty))
