@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -29,8 +31,9 @@ public class Professor extends Usuario {
     @Column(name="ic_Liberado")
     private Boolean liberado;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="ds_NivelEscolaridade")
-    private String nivelEscolaridade;
+    private GrauInstrucao nivelEscolaridade;
 
     @ManyToMany
     @JoinTable(name = "ProfessoresCategorias",
