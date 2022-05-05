@@ -3,9 +3,14 @@ package br.fatec.we_can_teach_you.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import br.fatec.we_can_teach_you.dto.MarcacaoDTO;
 import br.fatec.we_can_teach_you.model.Marcacao;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Component
 public class MarcacaoMapper {
     public Marcacao toEntity(MarcacaoDTO obj){
         Marcacao marcacao = new Marcacao();
@@ -33,16 +38,16 @@ public class MarcacaoMapper {
 
     public List<Marcacao> toEntity(List<MarcacaoDTO> list) {
         List<Marcacao> lista = new ArrayList<>();
-        for (MarcacaoDTO a : list) {
-            lista.add(toEntity(a));
+        for (MarcacaoDTO mar : list) {
+            lista.add(toEntity(mar));
         }
         return lista;
     }
 
     public List<MarcacaoDTO> toDTO(List<Marcacao> list){
         List<MarcacaoDTO> lista = new ArrayList<>();
-        for(Marcacao a : list) {
-            lista.add(toDTO(a));
+        for(Marcacao mar : list) {
+            lista.add(toDTO(mar));
         }
         return lista;
     }

@@ -6,28 +6,29 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.fatec.we_can_teach_you.dto.MarcacaoDTO;
-import br.fatec.we_can_teach_you.mapper.MarcacaoMapper;
-import br.fatec.we_can_teach_you.model.Marcacao;
-import br.fatec.we_can_teach_you.repository.MarcacaoRepository;
+import br.fatec.we_can_teach_you.dto.EventoDTO;
+import br.fatec.we_can_teach_you.mapper.EventoMapper;
+import br.fatec.we_can_teach_you.model.Evento;
+import br.fatec.we_can_teach_you.repository.EventoRepository;
 
 @Service
-public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
+public class EventoService implements ServiceInterface<EventoDTO>{
+    
     @Autowired
-    private MarcacaoRepository repository;
+    private EventoRepository repository;
 
     @Autowired
-    private MarcacaoMapper mapper;
+    private EventoMapper mapper;
 
     @Override
-    public MarcacaoDTO create(MarcacaoDTO obj) {
-        Marcacao mar = repository.save(mapper.toEntity(obj));
-        return mapper.toDTO(mar);
+    public EventoDTO create(EventoDTO obj) {
+        Evento ev = repository.save(mapper.toEntity(obj));
+        return mapper.toDTO(ev);
     }
 
     @Override
-    public MarcacaoDTO findById(Long id) {
-        Optional<Marcacao> obj = repository.findById(id);
+    public EventoDTO findById(Long id) {
+        Optional<Evento> obj = repository.findById(id);
         if(obj.isPresent()) {
             return mapper.toDTO(obj.get());
         }
@@ -35,12 +36,12 @@ public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
     }
 
     @Override
-    public List<MarcacaoDTO> findAll() {
+    public List<EventoDTO> findAll() {
         return mapper.toDTO(repository.findAll());
     }
 
     @Override
-    public boolean update(MarcacaoDTO obj) {
+    public boolean update(EventoDTO obj) {
         if (repository.existsById(obj.getId())) {
             repository.save(mapper.toEntity(obj));
             return true;
