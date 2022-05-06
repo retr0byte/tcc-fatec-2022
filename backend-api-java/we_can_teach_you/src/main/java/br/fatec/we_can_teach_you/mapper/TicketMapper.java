@@ -20,6 +20,10 @@ public class TicketMapper {
         ticket.setDescricao(obj.getDescricao());
         ticket.setAberturaTicket(obj.getAberturaTicket());
         ticket.setFechamentoTicket(obj.getFechamentoTicket());
+        ticket.setRespostaTicket(obj.getRespostaTicket());
+        ticket.setFuncionarios(obj.getFuncionarios());
+        ticket.setProfessor(obj.getProfessor());
+        ticket.setAluno(obj.getAluno());
         return ticket;
     }
 
@@ -30,6 +34,10 @@ public class TicketMapper {
         ticketDTO.setDescricao(obj.getDescricao());
         ticketDTO.setAberturaTicket(obj.getAberturaTicket());
         ticketDTO.setFechamentoTicket(obj.getFechamentoTicket());
+        ticketDTO.setRespostaTicket(obj.getRespostaTicket());
+        ticketDTO.setFuncionarios(obj.getFuncionarios());
+        ticketDTO.setProfessor(obj.getProfessor());
+        ticketDTO.setAluno(obj.getAluno());
         return ticketDTO;
     }
 

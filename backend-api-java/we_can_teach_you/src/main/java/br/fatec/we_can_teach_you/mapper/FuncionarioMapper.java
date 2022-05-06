@@ -23,9 +23,8 @@ public class FuncionarioMapper {
         funcionario.setDataNascimento(obj.getDataNascimento());
         funcionario.setNumeroCelular(obj.getNumeroCelular());
         funcionario.setCpf(obj.getCpf());
-        funcionario.setTickets(obj.getTickets());
-        funcionario.setCargo(funcionario.getCargo());
-        funcionario.setSetor(funcionario.getSetor());
+        funcionario.setCargo(obj.getCargo());
+        funcionario.setSetor(obj.getSetor());
         return funcionario;
     }
 
@@ -39,9 +38,8 @@ public class FuncionarioMapper {
         funcionarioDTO.setDataNascimento(obj.getDataNascimento());
         funcionarioDTO.setNumeroCelular(obj.getNumeroCelular());
         funcionarioDTO.setCpf(obj.getCpf());
-        funcionarioDTO.setTickets(obj.getTickets());
-        funcionarioDTO.setCargo(funcionarioDTO.getCargo());
-        funcionarioDTO.setSetor(funcionarioDTO.getSetor());
+        funcionarioDTO.setCargo(obj.getCargo());
+        funcionarioDTO.setSetor(obj.getSetor());
         return funcionarioDTO;
     }
 

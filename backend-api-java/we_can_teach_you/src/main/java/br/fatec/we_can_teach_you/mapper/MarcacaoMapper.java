@@ -17,7 +17,7 @@ public class MarcacaoMapper {
         marcacao.setId(obj.getId());
         marcacao.setNome(obj.getNome());
         marcacao.setDescricao(obj.getDescricao());
-        marcacao.setDataMarcacao(obj.getDataMarcacao());
+        marcacao.setMomentoMarcacao(obj.getMomentoMarcacao());
         marcacao.setAluno(obj.getAluno());
         marcacao.setAula(obj.getAula());
         
@@ -29,7 +29,7 @@ public class MarcacaoMapper {
         marcacaoDTO.setId(obj.getId());
         marcacaoDTO.setNome(obj.getNome());
         marcacaoDTO.setDescricao(obj.getDescricao());
-        marcacaoDTO.setDataMarcacao(obj.getDataMarcacao());
+        marcacaoDTO.setMomentoMarcacao(obj.getMomentoMarcacao());
         marcacaoDTO.setAluno(obj.getAluno());
         marcacaoDTO.setAula(obj.getAula());
 

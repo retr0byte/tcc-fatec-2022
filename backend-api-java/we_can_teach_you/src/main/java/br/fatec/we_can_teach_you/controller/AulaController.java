@@ -21,7 +21,7 @@ import br.fatec.we_can_teach_you.dto.AulaDTO;
 import br.fatec.we_can_teach_you.service.AulaService;
 
 @RestController
-@RequestMapping("/aula")
+@RequestMapping("/aulas")
 public class AulaController implements ControllerInterface<AulaDTO>{
     
     @Autowired

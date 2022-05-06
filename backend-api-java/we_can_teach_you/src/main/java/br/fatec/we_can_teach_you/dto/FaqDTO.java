@@ -1,5 +1,7 @@
 package br.fatec.we_can_teach_you.dto;
 
+import javax.validation.constraints.NotNull;
+
 import br.fatec.we_can_teach_you.model.Funcionario;
 
 import lombok.Getter;
@@ -17,5 +19,6 @@ public class FaqDTO {
 
     private String respostaPergunta;
 
+    @NotNull
     private Funcionario funcionario;
 }

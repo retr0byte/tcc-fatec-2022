@@ -23,7 +23,6 @@ public class ProfessorMapper {
         professor.setDataNascimento(obj.getDataNascimento());
         professor.setNumeroCelular(obj.getNumeroCelular());
         professor.setCpf(obj.getCpf());
-        professor.setTickets(obj.getTickets());
         professor.setCertificado(obj.getCertificado());
         professor.setLiberado(obj.getLiberado());
         professor.setNivelEscolaridade(obj.getNivelEscolaridade());
@@ -41,7 +40,6 @@ public class ProfessorMapper {
         professorDTO.setDataNascimento(obj.getDataNascimento());
         professorDTO.setNumeroCelular(obj.getNumeroCelular());
         professorDTO.setCpf(obj.getCpf());
-        professorDTO.setTickets(obj.getTickets());
         professorDTO.setCertificado(obj.getCertificado());
         professorDTO.setLiberado(obj.getLiberado());
         professorDTO.setNivelEscolaridade(obj.getNivelEscolaridade());

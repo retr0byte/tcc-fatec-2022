@@ -11,13 +11,13 @@ import javax.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.fatec.we_can_teach_you.model.Categoria;
 import br.fatec.we_can_teach_you.model.GrauInstrucao;
 import br.fatec.we_can_teach_you.model.Sexo;
-import br.fatec.we_can_teach_you.model.Ticket;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -45,14 +45,13 @@ public class AlunoDTO {
     private Sexo sexo;
 
     @Past
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Calendar dataNascimento;
 
     private String numeroCelular;
 
     @CPF
     private String cpf;
-
-    private List<Ticket> tickets;
 
     @Length(min = 2, max = 6)
     private GrauInstrucao nivelEscolaridade;

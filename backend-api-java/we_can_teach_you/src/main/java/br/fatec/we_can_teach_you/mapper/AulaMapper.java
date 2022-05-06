@@ -17,10 +17,14 @@ public class AulaMapper {
         Aula aula = new Aula();
         aula.setId(obj.getId());
         aula.setLinkReuniao(obj.getLinkReuniao());
+        aula.setNome(obj.getNome());
+        aula.setDescricao(obj.getDescricao());
         aula.setDataAula(obj.getDataAula());
         aula.setDuracaoAula(obj.getDuracaoAula());
         aula.setValorAula(obj.getValorAula());
         aula.setCategoria(obj.getCategoria());
+        aula.setAlunos(obj.getAlunos());
+        aula.setProfessor(obj.getProfessor());
         return aula;
     }
     
@@ -28,10 +32,14 @@ public class AulaMapper {
         AulaDTO aulaDTO = new AulaDTO();
         aulaDTO.setId(obj.getId());
         aulaDTO.setLinkReuniao(obj.getLinkReuniao());
+        aulaDTO.setNome(obj.getNome());
+        aulaDTO.setDescricao(obj.getDescricao());
         aulaDTO.setDataAula(obj.getDataAula());
         aulaDTO.setDuracaoAula(obj.getDuracaoAula());
         aulaDTO.setValorAula(obj.getValorAula());
         aulaDTO.setCategoria(obj.getCategoria());
+        aulaDTO.setAlunos(obj.getAlunos());
+        aulaDTO.setProfessor(obj.getProfessor());
         return aulaDTO;
     }
 

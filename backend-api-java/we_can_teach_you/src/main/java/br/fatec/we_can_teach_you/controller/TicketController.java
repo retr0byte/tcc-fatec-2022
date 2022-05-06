@@ -21,7 +21,7 @@ import br.fatec.we_can_teach_you.dto.TicketDTO;
 import br.fatec.we_can_teach_you.service.TicketService;
 
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("/tickets")
 public class TicketController implements ControllerInterface<TicketDTO>{
     
     @Autowired

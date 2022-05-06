@@ -1,18 +1,17 @@
 package br.fatec.we_can_teach_you.model;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,21 +28,32 @@ public class Aula extends AbstractEntity {
     @Column(name="ds_LinkReuniao")
     private String linkReuniao;
 
+    @Column(name="nm_Aula")
+    private String nome;
+
+    @Column(name="ds_Aula")
+    private String descricao;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="dt_Aula")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Calendar dataAula;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="qt_DuracaoAula")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Calendar duracaoAula;
 
     @Column(name="vl_Aula")
     private Float valorAula;
 
-    @Getter(onMethod = @__(@JsonIgnore))
-    @Setter(onMethod = @__(@JsonProperty))
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Categoria categoria;
+
+    @ManyToMany
+    @JoinTable(name = "AulasAlunos",
+        joinColumns=@JoinColumn(name="cd_Aula"),
+        inverseJoinColumns=@JoinColumn(name="cd_Aluno") )
+    private List<Aluno> alunos;
+
+    @ManyToOne()
+    private Professor professor;
 }

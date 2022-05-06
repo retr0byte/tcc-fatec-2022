@@ -23,7 +23,6 @@ public class AlunoMapper {
         aluno.setDataNascimento(obj.getDataNascimento());
         aluno.setNumeroCelular(obj.getNumeroCelular());
         aluno.setCpf(obj.getCpf());
-        aluno.setTickets(obj.getTickets());
         aluno.setNivelEscolaridade(obj.getNivelEscolaridade());
         aluno.setCategorias(obj.getCategorias());
         return aluno;
@@ -39,7 +38,6 @@ public class AlunoMapper {
         alunoDTO.setDataNascimento(obj.getDataNascimento());
         alunoDTO.setNumeroCelular(obj.getNumeroCelular());
         alunoDTO.setCpf(obj.getCpf());
-        alunoDTO.setTickets(obj.getTickets());
         alunoDTO.setNivelEscolaridade(obj.getNivelEscolaridade());
         alunoDTO.setCategorias(obj.getCategorias());
         return alunoDTO;
