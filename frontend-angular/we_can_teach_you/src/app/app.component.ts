@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'we_can_teach_you';
+  auth = false;
+
+  login(){
+    this.auth = !this.auth;
+    console.log(this.auth) // ! ao mudar o auth, deveria mudar a tela seguindo o ngIf
+  }
 }
