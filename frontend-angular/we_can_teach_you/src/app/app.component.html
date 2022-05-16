@@ -1,8 +1,67 @@
-<div class="container" *ngIf="!auth">
+<div class="container w100" *ngIf="!auth">
   <app-access [login]="login"></app-access>
 </div>
 
-<div class="container" *ngIf="auth">
-  acesso a aplicacao
-  <!-- router outlet vai aqui -->
+<div class="container w100" *ngIf="auth">
+  <header id="top-menu" class="w100">
+
+    <div class="w50">
+      <i id="toggle-menu" class="fa-solid fa-bars"></i>
+
+      <img src="/assets/images/logomarca.svg" alt="logomarca">
+
+      <div id="search-form" *ngIf="topMenuSearchOpt">
+        <label for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <input type="text" id="search-input" placeholder="Buscar conteúdo...">
+      </div>
+    </div>
+
+    <div class="w50">
+      <i id="toggle-external-chat" class="fa-solid fa-comment"></i>
+
+      <i id="toggle-achievements" class="fa-solid fa-trophy"></i>
+
+      <div id="settings-menu-container">
+        <div id="toggle-settings-menu">
+          <img src="/assets/images/user-mini-avatar.png" alt="avatar do usuário">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div id="settings-menu">
+          <!-- configs de minha conta, meus tickets etc. -->
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+
+  <main id="content" class="w100">
+    <aside id="left-menu">
+
+      <div id="user-infos">
+        <img src="/assets/images/user-avatar.png" alt="avatar do usuário" id="user-avatar">
+        <h2>Nome usuário</h2>
+        <a href="#">Minha conta</a>
+      </div>
+
+      <nav id="main-menu" class="w100">
+        <ul class="w100">
+          <li class=""><a href="#"><i class="fa-solid fa-chalkboard-user"></i> Minhas aulas</a></li>
+          <li><a href="#"><i class="fa-regular fa-calendar"></i> Calendário</a></li>
+          <li><a href="#"><i class="fa-regular fa-comments"></i> Perguntas Frequentes</a></li>
+        </ul>
+      </nav>
+
+      <div id="logout" class="w100">
+        <p>Não é usuário? <a href="#" (click)="this.login()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a> </p>
+      </div>
+
+    </aside>
+
+    <section id="comps-container">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+
 </div>

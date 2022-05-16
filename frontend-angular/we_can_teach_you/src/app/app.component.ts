@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  auth = false;
+  auth = true;
+  topMenuSearchOpt = false;
 
   login(){
     this.auth = !this.auth;

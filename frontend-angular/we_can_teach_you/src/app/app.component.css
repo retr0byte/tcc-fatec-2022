@@ -1,5 +1,216 @@
 
+/* defaults */
+.w50 { width: 50%; }
+.w100 { width: 100%; }
+
 div.container {
-  width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* position settings */
+header#top-menu {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 0.5px solid #cccccc;
+  background-color: #FFFFFF;
+}
+
+main#content {
+  margin-top: 100px;
+  height: calc(100% - 100px);
+}
+
+main#content aside#left-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  border-right: 0.5px solid #cccccc;
+  background-color: #FFFFFF;
+}
+
+main#content section#comps-container {
+  width: calc(100% - 300px);
+  height: 100%;
+  margin-left: 300px;
+  overflow-y: scroll;
+  padding: 30px;
+}
+
+/* header settings - left side */
+header#top-menu {
+  padding: 0 30px;
+}
+
+header#top-menu div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+header#top-menu div:first-child img {
+  width: 300px;
+  margin: 0 20px;
+}
+
+header#top-menu div:first-child i#toggle-menu {
+  font-size: 3rem;
+  color: #838488;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+header#top-menu div:first-child div#search-form {
+  border-radius: 10px;
+  width: 400px;
+  background-color: #F5F8FB;
+  color: #838488;
+  padding: 10px;
+}
+
+header#top-menu div:first-child div#search-form label i {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+header#top-menu div:first-child div#search-form input {
+  background-color: transparent;
+  border: none;
+  width: 90%;
+}
+
+header#top-menu div:first-child div#search-form input:focus {
+  outline: none;
+}
+
+/* header settings - right side */
+
+header#top-menu div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header#top-menu div:last-child i {
+  font-size: 2rem;
+  margin-right: 25px;
+  color: #838488;
+  cursor: pointer;
+}
+
+header#top-menu div:last-child i.highlight-item {
+  color: #5D9BF2;
+}
+
+header#top-menu div:last-child div#settings-menu-container div#toggle-settings-menu img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+}
+
+header#top-menu div:last-child div#settings-menu-container div#toggle-settings-menu i {
+  margin: 0;
+  margin-left: -10px;
+  font-size: 1rem;
+}
+
+/* main settings -> left-menu */
+
+main#content {
+  background-color: #F5F9FF;
+}
+
+main#content aside#left-menu div#user-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #838488;
+  height: 30%;
+}
+
+main#content aside#left-menu div#user-infos img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+  margin: 20px 0 10px 0;
+}
+
+main#content aside#left-menu div#user-infos h2 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+main#content aside#left-menu div#user-infos a {
+  color: #838488;
+  text-decoration: none;
+}
+
+main#content aside#left-menu nav#main-menu {
+  height: 35%;
+}
+
+main#content aside#left-menu nav#main-menu ul {
+  height: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main#content aside#left-menu nav#main-menu ul li {
+  padding: 10px 10px 10px 20px;
+  width:100%;
+}
+
+main#content aside#left-menu nav#main-menu ul li a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #838488;
+}
+
+main#content aside#left-menu nav#main-menu ul li i {
+  padding: 0 15px 0 25px;
+}
+
+main#content aside#left-menu div#logout {
+  display: flex;
+  align-items: flex-end;
+  height: 20%;
+}
+
+main#content aside#left-menu nav#main-menu ul li.highlight-menu {
+
+  background-color: rgba(93,155,242,0.36);
+  border-left: 8px solid #5D9BF2;
+  padding-left: 10px;
+}
+
+main#content aside#left-menu nav#main-menu ul li.highlight-menu a {
+  font-weight: bold;
+  color: #5D9BF2;
+}
+
+main#content aside#left-menu div#logout {
+  padding-left: 50px;
+  font-size: 0.8rem;
+  color: #838488;
+  text-decoration: underline;
+}
+
+main#content aside#left-menu div#logout a {
+  color: #838488;
+}
+
+main#content aside#left-menu div#logout i {
+  margin-left: 10px;
 }

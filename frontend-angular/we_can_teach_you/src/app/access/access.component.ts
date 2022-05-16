@@ -19,6 +19,4 @@ export class AccessComponent implements OnInit {
     this.newUser = !this.newUser;
   }
 
-  register(){}
-
 }
