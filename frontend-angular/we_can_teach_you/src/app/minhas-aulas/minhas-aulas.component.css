@@ -5,6 +5,41 @@ h1 {
 .all {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.menu-filter {
+    display: flex;
+    margin: 10px 0 10px 0;
+}
+
+.filter-btn {
+    color:#838488;
+}
+
+.filter-select {
+    margin-left: 5%;
+    width: 80%;
+}
+
+.filter-select select {
+    border: none;
+    padding: 2px;
+}
+
+.filter-select select:first-child {
+    margin-right: 20px;
+    width: 150px;
+}
+
+.filter-select select:nth-child(2) {
+    width: 100px;
+}
+
+.filter-select select {
+    background-color: #E5EAF5;
+    color: #5E9BF3;
+    border-radius: 8px;
 }
 
 .classes {

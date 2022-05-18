@@ -1,0 +1,32 @@
+<div class="all-ap">
+    
+    <div *ngFor="let item of d" class="appointment">
+        <div class="margin">
+            <div class="box-time">
+                
+                <div class="icon-time">
+                    <i class="fa-solid fa-circle-pause"></i>
+                </div>
+
+                <div class="time">
+                    {{item.duracaoAula}}
+                </div>
+
+            </div>
+
+            <div class="info">
+                
+                <div class="title">
+                    {{item.nome}}
+                </div>
+
+                <div class="text">
+                    {{item.descricao}}
+                </div>
+
+            </div>
+        </div>
+
+    </div>  
+</div>
+
