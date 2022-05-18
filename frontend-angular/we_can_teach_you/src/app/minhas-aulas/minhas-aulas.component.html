@@ -1,0 +1,59 @@
+<h1>Minhas aulas:</h1>
+
+<div class="all">
+
+    <div class="menu-filter">
+
+        <div class="filter-btn">
+
+        </div>
+
+        <div class="filter-select">
+
+        </div>
+
+    </div>
+
+    <div class="classes">
+    
+        <div *ngFor="let item of d; index as i" class="class">
+            
+            <div class="image">
+                <figure>
+                    <img
+                    src="https://professoremsala.com.br/wp-content/uploads/2017/08/imagem-17.jpg"
+                    alt="imagem da aula"/>
+                </figure>
+            </div>
+
+            <div class="info-class">
+
+                <div class="name-class">
+                    {{item.nome}}
+                </div>
+                
+                <div class="desc-class">
+                    {{item.descricao}}
+                </div>
+        
+                <div class="time-date">
+                    <div class="date-class">
+                        <i class="fa-regular fa-calendar"></i>{{item.dataAula}}
+                    </div>
+            
+                    <div class="time-class">
+                        <i class="fa-regular fa-clock"></i>{{item.duracaoAula}}
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <a href="#">mais informações</a>
+                </div>
+
+            </div>
+    
+        </div>
+    </div>    
+
+</div>
+
