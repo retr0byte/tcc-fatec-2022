@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.fatec.we_can_teach_you.dto.AlunoDTO;
+import br.fatec.we_can_teach_you.exception.AuthorizationException;
 import br.fatec.we_can_teach_you.service.AlunoService;
 
 @RestController
@@ -36,11 +37,15 @@ public class AlunoController implements ControllerInterface<AlunoDTO> {
     @Override
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
-        AlunoDTO obj = service.findById(id);
-        if (obj != null){
-            return ResponseEntity.ok(obj);
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        try {
+            AlunoDTO obj = service.findById(id);
+            if (obj != null){
+                return ResponseEntity.ok(obj);
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (AuthorizationException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
     }
 
     @Override

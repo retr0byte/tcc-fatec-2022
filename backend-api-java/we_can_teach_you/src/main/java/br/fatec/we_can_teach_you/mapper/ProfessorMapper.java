@@ -19,6 +19,7 @@ public class ProfessorMapper {
         professor.setNome(obj.getNome());
         professor.setEmail(obj.getEmail());
         professor.setSenha(obj.getSenha());
+        professor.setPerfis(obj.getPerfis());
         professor.setSexo(obj.getSexo());
         professor.setDataNascimento(obj.getDataNascimento());
         professor.setNumeroCelular(obj.getNumeroCelular());
@@ -36,6 +37,7 @@ public class ProfessorMapper {
         professorDTO.setNome(obj.getNome());
         professorDTO.setEmail(obj.getEmail());
         professorDTO.setSenha(obj.getSenha());
+        professorDTO.setPerfis(obj.getPerfisAsInteger());
         professorDTO.setSexo(obj.getSexo());
         professorDTO.setDataNascimento(obj.getDataNascimento());
         professorDTO.setNumeroCelular(obj.getNumeroCelular());

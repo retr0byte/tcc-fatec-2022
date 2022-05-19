@@ -1,11 +1,17 @@
 package br.fatec.we_can_teach_you.model;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -28,11 +34,16 @@ public abstract class Usuario extends AbstractEntity {
     @Column(name="nm_Usuario", length=60)
     private String nome;
     
-    @Column(name="ds_Email", length=60)
+    /// utilizado para logar
+    @Column(name="ds_Email", length=60, unique=true)
     private String email;
 
-    @Column(name="ds_Senha", length=24)
+    @Column(name="ds_Senha")
     private String senha;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "Perfis")
+    private Set<Integer> perfis = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name="ds_Sexo")
@@ -48,4 +59,16 @@ public abstract class Usuario extends AbstractEntity {
     @Column(name="cd_CPF", length=11)
     private String cpf;
 
+    public Set<TipoPerfil> getPerfis() {
+		return perfis.stream().map(x -> TipoPerfil.toEnum(x))
+				.collect(Collectors.toSet());
+	}
+
+    public Set<Integer> getPerfisAsInteger() {
+		return perfis;
+	}
+
+    public void addPerfil(TipoPerfil perfil) {
+		this.perfis.add(perfil.getCod());
+	}
 }

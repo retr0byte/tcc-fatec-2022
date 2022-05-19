@@ -19,6 +19,7 @@ public class FuncionarioMapper {
         funcionario.setNome(obj.getNome());
         funcionario.setEmail(obj.getEmail());
         funcionario.setSenha(obj.getSenha());
+        funcionario.setPerfis(obj.getPerfis());
         funcionario.setSexo(obj.getSexo());
         funcionario.setDataNascimento(obj.getDataNascimento());
         funcionario.setNumeroCelular(obj.getNumeroCelular());
@@ -34,6 +35,7 @@ public class FuncionarioMapper {
         funcionarioDTO.setNome(obj.getNome());
         funcionarioDTO.setEmail(obj.getEmail());
         funcionarioDTO.setSenha(obj.getSenha());
+        funcionarioDTO.setPerfis(obj.getPerfisAsInteger());
         funcionarioDTO.setSexo(obj.getSexo());
         funcionarioDTO.setDataNascimento(obj.getDataNascimento());
         funcionarioDTO.setNumeroCelular(obj.getNumeroCelular());

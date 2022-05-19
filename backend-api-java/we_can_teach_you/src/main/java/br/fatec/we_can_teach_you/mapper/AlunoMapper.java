@@ -19,6 +19,7 @@ public class AlunoMapper {
         aluno.setNome(obj.getNome());
         aluno.setEmail(obj.getEmail());
         aluno.setSenha(obj.getSenha());
+        aluno.setPerfis(obj.getPerfis());
         aluno.setSexo(obj.getSexo());
         aluno.setDataNascimento(obj.getDataNascimento());
         aluno.setNumeroCelular(obj.getNumeroCelular());
@@ -34,6 +35,7 @@ public class AlunoMapper {
         alunoDTO.setNome(obj.getNome());
         alunoDTO.setEmail(obj.getEmail());
         alunoDTO.setSenha(obj.getSenha());
+        alunoDTO.setPerfis(obj.getPerfisAsInteger());
         alunoDTO.setSexo(obj.getSexo());
         alunoDTO.setDataNascimento(obj.getDataNascimento());
         alunoDTO.setNumeroCelular(obj.getNumeroCelular());

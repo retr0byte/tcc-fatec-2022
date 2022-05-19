@@ -1,6 +1,7 @@
 package br.fatec.we_can_teach_you.dto;
 
 import java.util.Calendar;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -36,8 +37,9 @@ public class FuncionarioDTO {
 
     @Getter(onMethod = @__(@JsonIgnore))
 	@Setter(onMethod = @__(@JsonProperty))
-    @Length(min = 6, max = 24)
     private String senha;
+
+    private Set<Integer> perfis;
 
     @Length(min = 1, max = 2)
     private Sexo sexo;
