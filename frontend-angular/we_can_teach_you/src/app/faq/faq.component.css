@@ -1,0 +1,64 @@
+h1{
+    color: #5E9BF3;
+}
+
+.pesquisa{
+    margin: 20px auto;
+    align-items: center;
+
+}
+
+.pesquisa input{
+    background: #E5EAF5;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    font-size: 25px;
+}
+
+.perguntasTodas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faqItem{
+    display: flex;
+    flex-direction: column;
+    margin-top:20px ;
+   
+}
+
+.pergunta{
+    width: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+.pergunta > div{
+    display: flex;
+    align-items: center;
+}
+
+.pergunta > div > span{
+    margin-left:10px;
+}
+
+.resposta{
+    width: 78%;
+    background-color: white;
+    
+}
+
+.p-faq {
+    margin: 10px;
+}
+
+.fa-circle-question{
+   color: #5E9BF3;
+}
