@@ -10,6 +10,7 @@ import { FaqComponent } from './faq/faq.component';
 
 import { MinhasAulasComponent } from './minhas-aulas/minhas-aulas.component';
 import { MarcacoesComponent } from './marcacoes/marcacoes.component';
+import { AtividadesComponent } from './atividades/atividades.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MarcacoesComponent } from './marcacoes/marcacoes.component';
     MinhasAulasComponent,
     MarcacoesComponent,
     FaqComponent,
+    AtividadesComponent,
   ],
   imports: [
     BrowserModule,
