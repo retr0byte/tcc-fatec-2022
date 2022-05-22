@@ -1,8 +1,5 @@
 
 /* defaults */
-.w50 { width: 50%; }
-.w100 { width: 100%; }
-
 div.container {
   height: 100%;
   position: relative;

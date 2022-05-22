@@ -1,65 +1,225 @@
-<h1>Minhas aulas:</h1>
+<h1 class="main-title">Minhas aulas</h1>
 
-<div class="all">
+<div class="classes-filters">
+  <i class="fa-solid fa-filter"></i>
 
-    <div class="menu-filter">
+  <p>Filtrar</p>
 
-        <div class="filter-btn">
-            <i class="fa-regular fa-bars-filter"></i> 
-            Filtrar
-        </div>
+  <select id="categories-filter">
+    <option value="">Um</option>
+    <option value="">Dois</option>
+    <option value="">Tres</option>
+    <option value="">Quatro</option>
+    <option value="">Cinco</option>
+  </select>
 
-        <div class="filter-select">
-            <select name="categories" class="filter">
-                <option value="0">categorias</option>
-            </select>
-            <select name="date" class="filter">
-                <option value="0">data</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div class="classes">
-    
-        <div *ngFor="let item of d; index as i" class="class">
-            
-            <div class="image">
-                <figure>
-                    <img
-                    src="https://professoremsala.com.br/wp-content/uploads/2017/08/imagem-17.jpg"
-                    alt="imagem da aula"/>
-                </figure>
-            </div>
-
-            <div class="info-class">
-
-                <div class="name-class">
-                    {{item.nome}}
-                </div>
-                
-                <div class="desc-class">
-                    {{item.descricao}}
-                </div>
-        
-                <div class="time-date">
-                    <div class="date-class">
-                        <i class="fa-regular fa-calendar"></i>{{item.dataAula}}
-                    </div>
-            
-                    <div class="time-class">
-                        <i class="fa-regular fa-clock"></i>{{item.duracaoAula}}
-                    </div>
-                </div>
-                
-                <div class="details">
-                    <a href="#">mais informações</a>
-                </div>
-
-            </div>
-    
-        </div>
-    </div>    
-
+  <input type="date" id="date-filter" />
 </div>
 
+<section class="classes-wrapper">
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="classes-wrapper">
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-item">
+    <figure
+      class="class-item-img"
+      style="background-image: url('/assets/images/aula.jpg')"
+    ></figure>
+
+    <div class="class-item-content">
+      <h2>Nome aula</h2>
+
+      <p>
+        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
+        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
+        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
+        consectetur id minim.
+      </p>
+
+      <div class="class-item-infos-wrapper">
+        <div class="class-item-info">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>11/05/2022</span>
+        </div>
+
+        <div class="class-item-info">
+          <i class="fa-solid fa-clock"></i>
+          <span>00:30:00</span>
+        </div>
+      </div>
+
+      <div class="class-item-btn-wrapper">
+        <button>Mais informações</button>
+      </div>
+    </div>
+  </div>
+</section>
