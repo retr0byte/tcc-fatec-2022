@@ -14,7 +14,8 @@ import { UserProfiles, UserProfilesTranslations, UserProfilesRoutes } from '../e
 export class AuthService {
   api = 'http://localhost:8080';
   // api = 'https://wcty-api.herokuapp.com';
-  userLogged: Auth | null = null;
+  // userLogged: Auth | null = null;
+  userLogged: any = true;
   profiles: UserProfiles[] = [ UserProfiles.ALUNO, UserProfiles.PROFESSOR, UserProfiles.FUNCIONARIO ];
   newUser = false;
 
