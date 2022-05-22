@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from './controller/auth.service';
+import { ControllerService } from './controller/controller.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  auth = true;
-  topMenuSearchOpt = false;
+  constructor(public auth: AuthService, public ctrl: ControllerService) {}
 
-  login(){
-    this.auth = !this.auth;
-    console.log(this.auth) // ! ao mudar o auth, deveria mudar a tela seguindo o ngIf
-  }
 }

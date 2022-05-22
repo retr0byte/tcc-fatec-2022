@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccessComponent } from './access/access.component';
-import { HomeComponent } from './home/home.component';
 
-import { FaqComponent } from './faq/faq.component';
+import { ControllerService } from './controller/controller.service';
+import { AuthService } from './controller/auth.service';
 
-import { MinhasAulasComponent } from './minhas-aulas/minhas-aulas.component';
-import { MarcacoesComponent } from './marcacoes/marcacoes.component';
-import { AtividadesComponent } from './atividades/atividades.component';
+import { HomeComponent } from './view/home/home.component';
+import { FaqComponent } from './view/faq/faq.component';
+import { MinhasAulasComponent } from './view/minhas-aulas/minhas-aulas.component';
+import { MarcacoesComponent } from './view/marcacoes/marcacoes.component';
+import { AtividadesComponent } from './view/atividades/atividades.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccessComponent,
     HomeComponent,
     MinhasAulasComponent,
     MarcacoesComponent,
@@ -25,9 +26,10 @@ import { AtividadesComponent } from './atividades/atividades.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, ControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

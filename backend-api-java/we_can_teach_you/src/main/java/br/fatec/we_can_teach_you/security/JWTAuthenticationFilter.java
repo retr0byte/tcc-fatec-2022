@@ -70,7 +70,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     
     private String jsonAuth(String token, Usuario usuario) {
 		return "{\"token\": \"" + token + "\"" + ", " +
-		       "\"username\": \"" + usuario.getEmail() + "\", " +
+		       "\"userId\": \"" + usuario.getId() + "\", " +
+		       "\"username\": \"" + usuario.getNome() + "\", " +
 		       "\"profile\": " + usuario.getPerfis().stream()
 		                                .map(x -> "\"" + x + "\"")
 		                                .collect(Collectors.toList()) + "}";

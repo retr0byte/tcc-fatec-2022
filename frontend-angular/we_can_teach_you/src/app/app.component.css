@@ -9,6 +9,147 @@ div.container {
   overflow: hidden;
 }
 
+/* forms: login & register */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 0.5px solid #cccccc;
+}
+
+header div:first-child img {
+  width: 300px;
+}
+
+header div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+
+header div:last-child a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 20px;
+}
+
+header div:last-child a#access-platform {
+  color: #838488;
+}
+
+header div:last-child a#register {
+  color: #5D9BF3;
+  border: 2px solid #5D9BF3;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+main {
+  display: flex;
+  height: calc(100% - 100px);
+}
+
+main div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+}
+
+main div:first-child img {
+  width: 100%;
+  max-width: 1150px;
+  height: 100%;
+}
+
+main div.form {
+  display: flex;
+  justify-content: flex-start;
+  width: 35%;
+  height: 100%;
+  background-color: #F5F9FF;
+  padding: 20px;
+}
+
+main div.form h1 {
+  font-size: 1.3rem;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+main div.form div#form-login,
+main div.form div#form-register {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+main div.form div#form-login input,
+main div.form div#form-register input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #838488;
+  background-color: transparent;
+  padding: 15px 10px;
+}
+
+main div.form div#form-register select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #838488;
+  background-color: transparent;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+main div.form div#form-login label,
+main div.form div#form-register label {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color:#838488;
+}
+
+main div.form div#form-login input:focus,
+main div.form div#form-register input:focus,
+main div.form div#form-register select { outline: none; }
+
+main div.form div#form-login .buttons,
+main div.form div#form-register .buttons {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+main div.form div#form-login .buttons button,
+main div.form div#form-register .buttons button {
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main div.form div#form-login .buttons button#form-register-btn,
+main div.form div#form-register .buttons button#form-proceed-btn {
+  border: none;
+  background-color: #5E9BF3;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+main div.form div#form-login .buttons button.form-login-btn,
+main div.form div#form-register .buttons button.form-login-btn {
+  border: none;
+  background-color: transparent;
+  color: #5D9BF3;
+}
+
+
 /* position settings */
 header#top-menu {
   display: flex;

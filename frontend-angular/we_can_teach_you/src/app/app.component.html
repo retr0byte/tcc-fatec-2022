@@ -1,18 +1,119 @@
-<div class="container w100" *ngIf="!auth">
-  <app-access [login]="login"></app-access>
+<div class="container w100" *ngIf="!auth.userLogged">
+  <header class="w100">
+    <div class="w50">
+      <img src="/assets/images/logomarca.svg" alt="logomarca" />
+    </div>
+
+    <div class="w50">
+      <a id="access-platform" href="#">Acessar plataforma</a>
+      <a id="register" href="#">Começar a aprender</a>
+    </div>
+  </header>
+
+  <main class="w100">
+    <div>
+      <img
+        src="/assets/images/mobile-login.svg"
+        alt="ilustração login de usuário"
+      />
+    </div>
+
+    <div class="form">
+      <div id="form-register" class="w100" *ngIf="auth.newUser">
+        <h1>Efetuar o Cadastro</h1>
+
+        <label for="fullname">Nome completo:</label>
+        <input type="text" id="fullname" #fullname />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" #email />
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" #password />
+
+        <label for="password-confirmation">Confirmação da senha:</label>
+        <input
+          type="password"
+          id="password-confirmation"
+          #passwordConfirmation
+        />
+
+        <label for="user-profile"
+          >Em qual tipo de usuário você se enquadra?</label
+        >
+        <select id="user-profile" #profile>
+          <option value="" selected disabled>Selecione</option>
+          <option *ngFor="let profile of auth.profiles" value="{{ profile }}">
+            {{ auth.getProfileName(profile) }}
+          </option>
+        </select>
+
+        <div class="buttons">
+          <button class="form-login-btn" (click)="auth.toggleOptions()">
+            Log in
+          </button>
+          <button
+            id="form-proceed-btn"
+            (click)="
+              auth.postRegister({
+                fullname: fullname.value,
+                email: email.value,
+                password: password.value,
+                passwordConfirmation: passwordConfirmation.value,
+                profile: {
+                  name: profile.options[profile.selectedIndex].text,
+                  value: profile.options[profile.selectedIndex].value
+                }
+              })
+            "
+          >
+            Efetuar cadastro
+          </button>
+        </div>
+      </div>
+
+      <div id="form-login" class="w100" *ngIf="!auth.newUser">
+        <h1>Efetuar o Login</h1>
+
+        <label for="email">E-mail</label>
+        <input type="text" id="email" #email />
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" #password />
+
+        <div class="buttons">
+          <button id="form-register-btn" (click)="auth.toggleOptions()">
+            Registrar-me
+          </button>
+          <button
+            class="form-login-btn"
+            (click)="
+              auth.postLogin({
+                email: email.value,
+                senha: password.value
+              })
+            "
+          >
+            Log in
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
 
-<div class="container w100" *ngIf="auth">
+<div class="container w100" *ngIf="auth.userLogged">
   <header id="top-menu" class="w100">
-
     <div class="w50">
       <i id="toggle-menu" class="fa-solid fa-bars"></i>
 
-      <img src="/assets/images/logomarca.svg" alt="logomarca">
+      <img src="/assets/images/logomarca.svg" alt="logomarca" />
 
-      <div id="search-form" *ngIf="topMenuSearchOpt">
-        <label for="search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
-        <input type="text" id="search-input" placeholder="Buscar conteúdo...">
+      <div id="search-form" *ngIf="ctrl.topMenuSearchOpt">
+        <label for="search-input"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></label>
+        <input type="text" id="search-input" placeholder="Buscar conteúdo..." />
       </div>
     </div>
 
@@ -23,7 +124,10 @@
 
       <div id="settings-menu-container">
         <div id="toggle-settings-menu">
-          <img src="/assets/images/user-mini-avatar.png" alt="avatar do usuário">
+          <img
+            src="/assets/images/user-mini-avatar.png"
+            alt="avatar do usuário"
+          />
           <i class="fa-solid fa-chevron-down"></i>
         </div>
 
@@ -31,37 +135,51 @@
           <!-- configs de minha conta, meus tickets etc. -->
         </div>
       </div>
-
     </div>
-
   </header>
 
   <main id="content" class="w100">
     <aside id="left-menu">
-
       <div id="user-infos">
-        <img src="/assets/images/user-avatar.png" alt="avatar do usuário" id="user-avatar">
-        <h2>Nome usuário</h2>
+        <img
+          src="/assets/images/user-avatar.png"
+          alt="avatar do usuário"
+          id="user-avatar"
+        />
+        <h2>{{ auth.userLogged.username }}</h2>
         <a href="#">Minha conta</a>
       </div>
 
       <nav id="main-menu" class="w100">
         <ul class="w100">
-          <li class=""><a [routerLink]="['/minhas-aulas']"><i class="fa-solid fa-chalkboard-user"></i> Minhas aulas</a></li>
-          <li><a href="#"><i class="fa-regular fa-calendar"></i> Calendário</a></li>
-          <li><a [routerLink]="['/faq']"><i class="fa-regular fa-comments"></i> Perguntas Frequentes</a></li>
+          <li class="">
+            <a [routerLink]="['/minhas-aulas']"
+              ><i class="fa-solid fa-chalkboard-user"></i> Minhas aulas</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fa-regular fa-calendar"></i> Calendário</a>
+          </li>
+          <li>
+            <a [routerLink]="['/faq']"
+              ><i class="fa-regular fa-comments"></i> Perguntas Frequentes</a
+            >
+          </li>
         </ul>
       </nav>
 
       <div id="logout" class="w100">
-        <p>Não é usuário? <a href="#" (click)="this.login()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a> </p>
+        <p>
+          Não é usuário?
+          <a href="#" (click)="auth.logout()"
+            ><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a
+          >
+        </p>
       </div>
-
     </aside>
 
     <section id="comps-container">
       <router-outlet></router-outlet>
     </section>
   </main>
-
 </div>
