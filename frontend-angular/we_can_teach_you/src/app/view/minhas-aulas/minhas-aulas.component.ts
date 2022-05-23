@@ -12,54 +12,64 @@ export class MinhasAulasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  d = [{
-    id: 1,
-    nome: 'Aula 1',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
-  {
-    id: 2,
-    nome: 'Aula2',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
-  {
-    id: 3,
-    nome: 'Aula 3',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
-  {
-    id: 4,
-    nome: 'Aula 4',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
-  {
-    id: 5,
-    nome: 'Aula 5',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
-  {
-    id: 6,
-    nome: 'Aula 6',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dataAula: '11/05/2022',
-    duracaoAula:'00:30:00',
-  },
- 
+  /// uma lista macro
+  /// n listas micro, cada uma com 3 objetos
+  /// cada objeto representa 1 aula
+  aulas = [
+    [
+      {
+        id: 1,
+        name: 'Aula 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      },
+      {
+        id: 2,
+        name: 'Aula 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      },
+      {
+        id: 3,
+        name: 'Aula 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      }
+    ],
+    [
+      {
+        id: 4,
+        name: 'Aula 4',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      },
+      {
+        id: 5,
+        name: 'Aula 5',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      },
+      {
+        id: 6,
+        name: 'Aula 6',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        date: '11/05/2022',
+        duration:'00:30:00',
+        img: '/assets/images/aula.jpg'
+      }
+    ],
   ]
-  
 
-  getLista() {
-    return this.d;
-  }
+
 
 }

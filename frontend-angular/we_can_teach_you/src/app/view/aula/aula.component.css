@@ -1,0 +1,108 @@
+
+div.class-container {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+div.class-container p.class-description {
+  margin-bottom: 30px;
+}
+
+div.class-container div.class-meeting {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  justify-content: center;
+}
+
+div.class-container div.class-meeting iframe {
+  width: 100%;
+  height: 100%;
+}
+
+div.class-container div.class-infos-wrapper {
+  width: 100%;
+  height: 15%;
+  padding: 20px 0;
+  display: flex;
+}
+
+div.class-container div.class-infos-wrapper div.class-infos {
+  width: calc(100% / 4);
+  height: 100%;
+  margin: 0 20px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.class-container div.class-infos-wrapper div.class-infos > i {
+  color: #5E9BF3;
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+div.class-container div.class-infos-wrapper div.class-infos div p.info-title {
+  font-size: 1.4rem;
+  letter-spacing: 5px;
+}
+
+div.class-container div.class-infos-wrapper div.class-infos div p.info-subtitle {
+  font-size: .9rem;
+}
+
+div.class-container div.class-infos-wrapper .professor-infos figure {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+
+div.class-container div.class-infos-wrapper .professor-infos span#stars i {
+  color: #FFCE31;
+}
+
+div.class-container div.class-menu-wrapper {
+  width: 100%;
+  padding-top: 10px;
+}
+
+div.class-container div.class-menu-wrapper nav.class-menu ul {
+  width: 21%;
+  min-width: 420px;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+div.class-container div.class-menu-wrapper nav.class-menu ul li a {
+  text-decoration: none;
+  background-color: rgba(94, 156, 243, 0.22);
+  color: #5E9BF3;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+div.class-container div.class-menu-wrapper nav.class-menu ul li a.active-menu-page {
+  background-color: #5E9CF3;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+div.class-container div.class-menu-wrapper div.class-menu-pages {
+  width: 100%;
+  background-color: #CDE0FB;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+div.class-container div.class-menu-wrapper div.class-menu-pages div.class-menu-page {
+  /* width: 100%;
+  background-color: #FFFFFF;
+  min-height: 50px; */
+}

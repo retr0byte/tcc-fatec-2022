@@ -16,209 +16,34 @@
   <input type="date" id="date-filter" />
 </div>
 
-<section class="classes-wrapper">
-  <div class="class-item">
+<section class="classes-wrapper" *ngFor="let aulasGroup of aulas">
+  <div class="class-item" *ngFor="let aula of aulasGroup">
     <figure
       class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
+      style="background-image: url({{aula.img}})"
     ></figure>
 
     <div class="class-item-content">
-      <h2>Nome aula</h2>
+      <h2>{{aula.name}}</h2>
 
       <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
+        {{aula.description}}
       </p>
 
       <div class="class-item-infos-wrapper">
         <div class="class-item-info">
           <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
+          <span>{{aula.date}}</span>
         </div>
 
         <div class="class-item-info">
           <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
+          <span>{{aula.duration}}</span>
         </div>
       </div>
 
       <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="class-item">
-    <figure
-      class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
-    ></figure>
-
-    <div class="class-item-content">
-      <h2>Nome aula</h2>
-
-      <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
-      </p>
-
-      <div class="class-item-infos-wrapper">
-        <div class="class-item-info">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
-        </div>
-
-        <div class="class-item-info">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
-        </div>
-      </div>
-
-      <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="class-item">
-    <figure
-      class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
-    ></figure>
-
-    <div class="class-item-content">
-      <h2>Nome aula</h2>
-
-      <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
-      </p>
-
-      <div class="class-item-infos-wrapper">
-        <div class="class-item-info">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
-        </div>
-
-        <div class="class-item-info">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
-        </div>
-      </div>
-
-      <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="classes-wrapper">
-  <div class="class-item">
-    <figure
-      class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
-    ></figure>
-
-    <div class="class-item-content">
-      <h2>Nome aula</h2>
-
-      <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
-      </p>
-
-      <div class="class-item-infos-wrapper">
-        <div class="class-item-info">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
-        </div>
-
-        <div class="class-item-info">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
-        </div>
-      </div>
-
-      <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="class-item">
-    <figure
-      class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
-    ></figure>
-
-    <div class="class-item-content">
-      <h2>Nome aula</h2>
-
-      <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
-      </p>
-
-      <div class="class-item-infos-wrapper">
-        <div class="class-item-info">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
-        </div>
-
-        <div class="class-item-info">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
-        </div>
-      </div>
-
-      <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="class-item">
-    <figure
-      class="class-item-img"
-      style="background-image: url('/assets/images/aula.jpg')"
-    ></figure>
-
-    <div class="class-item-content">
-      <h2>Nome aula</h2>
-
-      <p>
-        Fugiat voluptate proident id sint id aliquip reprehenderit ea commodo
-        amet duis. Aute minim est ut mollit reprehenderit mollit aliquip
-        pariatur eiusmod laboris officia aute aliqua. Dolor labore Lorem
-        consectetur id minim.
-      </p>
-
-      <div class="class-item-infos-wrapper">
-        <div class="class-item-info">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span>11/05/2022</span>
-        </div>
-
-        <div class="class-item-info">
-          <i class="fa-solid fa-clock"></i>
-          <span>00:30:00</span>
-        </div>
-      </div>
-
-      <div class="class-item-btn-wrapper">
-        <button>Mais informações</button>
+        <a [routerLink]="['/aula', aula.id, 'materiais']">Mais informações</a>
       </div>
     </div>
   </div>

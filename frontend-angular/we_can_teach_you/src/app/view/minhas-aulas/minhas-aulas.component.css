@@ -92,11 +92,12 @@ section.classes-wrapper div.class-item div.class-item-content div.class-item-btn
   justify-content: flex-end;
 }
 
-section.classes-wrapper div.class-item div.class-item-content div.class-item-btn-wrapper button {
+section.classes-wrapper div.class-item div.class-item-content div.class-item-btn-wrapper a {
   padding: 5px 10px;
   border: none;
   background-color: #5E9BF3;
   color: #FFFFFF;
   border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
 }

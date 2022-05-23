@@ -13,6 +13,7 @@ import { FaqComponent } from './view/faq/faq.component';
 import { MinhasAulasComponent } from './view/minhas-aulas/minhas-aulas.component';
 import { MarcacoesComponent } from './view/marcacoes/marcacoes.component';
 import { AtividadesComponent } from './view/atividades/atividades.component';
+import { AulaComponent } from './view/aula/aula.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AtividadesComponent } from './view/atividades/atividades.component';
     MarcacoesComponent,
     FaqComponent,
     AtividadesComponent,
+    AulaComponent,
   ],
   imports: [
     BrowserModule,

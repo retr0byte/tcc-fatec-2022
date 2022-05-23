@@ -1,0 +1,130 @@
+<h1 class="main-title">Aula de: <span>Matemática</span></h1>
+
+<div class="class-container">
+  <p class="class-description">
+    Tempor sunt culpa dolore est Lorem non ullamco velit cillum. Laborum ut do
+    nulla aliquip in exercitation sint ex in aute nostrud commodo incididunt.
+    Deserunt nostrud irure qui qui deserunt occaecat proident amet proident
+    minim dolore elit amet nisi. Amet fugiat ad adipisicing ex eiusmod veniam
+    Lorem do velit pariatur id dolore nisi irure. Ad in eu in pariatur.
+  </p>
+
+  <!-- o ZOOM tem API, usar ele ao invés do MEET -->
+  <div class="class-meeting">
+    <iframe
+      src="https://www.youtube.com/embed/7gK3-QG363o"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    ></iframe>
+  </div>
+
+  <div class="class-infos-wrapper">
+    <div class="class-infos professor-infos">
+      <figure
+        id="professor-img"
+        style="background-image: url('/assets/images/prof.jpg')"
+      ></figure>
+
+      <div class="professor-classification">
+        <p>Profa. Angela</p>
+        <span id="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="class-infos activities-qtt">
+      <i class="fa-solid fa-bookmark"></i>
+      <div>
+        <p class="info-title">0/3</p>
+        <p class="info-subtitle">Atividades</p>
+      </div>
+    </div>
+
+    <div class="class-infos appointments-qtt">
+      <i class="fa-solid fa-location-pin"></i>
+      <div>
+        <p class="info-title">0</p>
+        <p class="info-subtitle">Marcações</p>
+      </div>
+    </div>
+
+    <div class="class-infos class-duration">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <div>
+        <p class="info-title">11 minutos</p>
+        <p class="info-subtitle">Duração da aula</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-menu-wrapper">
+    <nav class="class-menu">
+      <ul>
+        <li>
+          <a
+            [routerLink]="['/aula', this.classId, 'materiais']"
+            class="{{
+              this.classSubsection === 'materiais' ? 'active-menu-page' : ''
+            }}"
+            >Materiais de aula</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/aula', this.classId, 'chat']" class="{{
+            this.classSubsection === 'chat' ? 'active-menu-page' : ''
+          }}">CHAT</a>
+        </li>
+        <li>
+          <a [routerLink]="['/aula', this.classId, 'atividades']" class="{{
+            this.classSubsection === 'atividades' ? 'active-menu-page' : ''
+          }}"
+            >Atividades</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/aula', this.classId, 'marcacoes']" class="{{
+            this.classSubsection === 'marcacoes' ? 'active-menu-page' : ''
+          }}"
+            >Marcações</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- !
+      ! caso o espaço correspondente ao menu selecionado for ficar vazio e não haja interação possível
+      ! deve apresentar uma mensagem do tipo: "Nenhuma atividade encontrada..."
+    ! -->
+    <div class="class-menu-pages">
+      <div
+        class="class-menu-page class-materials-page"
+        *ngIf="this.classSubsection === 'materiais'"
+      ></div>
+
+      <div
+        class="class-menu-page inner-chat-page"
+        *ngIf="this.classSubsection === 'chat'"
+      ></div>
+
+      <div
+        class="class-menu-page activities-page"
+        *ngIf="this.classSubsection === 'atividades'"
+      >
+        <app-atividades></app-atividades>
+      </div>
+
+      <div
+        class="class-menu-page appointments-page"
+        *ngIf="this.classSubsection === 'marcacoes'"
+      >
+        <app-marcacoes></app-marcacoes>
+      </div>
+    </div>
+  </div>
+</div>
