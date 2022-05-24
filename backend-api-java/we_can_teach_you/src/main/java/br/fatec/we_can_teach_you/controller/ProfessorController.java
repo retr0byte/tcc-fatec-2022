@@ -47,6 +47,11 @@ public class ProfessorController implements ControllerInterface<ProfessorDTO> {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
     }
+    
+    @GetMapping("/categoria/{category}")
+    public ResponseEntity<?> getByCategory(@PathVariable("category") String category) {
+        return ResponseEntity.ok(service.findByCategory(category));
+    }
 
     @Override
     @PostMapping

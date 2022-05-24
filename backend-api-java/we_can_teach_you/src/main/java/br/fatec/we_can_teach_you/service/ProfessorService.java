@@ -47,6 +47,10 @@ public class ProfessorService implements ServiceInterface<ProfessorDTO> {
         }
         return null;
     }
+    
+    public List<ProfessorDTO> findByCategory(String category) {
+        return mapper.toDTO(repository.findByCategory(category));
+    }
 
     @Override
     public List<ProfessorDTO> findAll() {
