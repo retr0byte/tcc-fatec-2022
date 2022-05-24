@@ -1,11 +1,11 @@
-<div class="home-container">
+<div class="home-container" *ngIf="!ctrl.professorsByCategory">
   <h1>O que deseja aprender hoje?</h1>
-  <form class="search-for-content">
+  <form class="search-for-content" (submit)="ctrl.getProfessorsByCategory(searchContent.value)">
     <div class="search-wrapper">
       <div>
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <input type="text" id="search-content" placeholder="Tente algo como: Matemática ou então Biologia...">
+      <input type="text" id="search-content" #searchContent placeholder="Tente algo como: Matemática ou então Biologia...">
     </div>
     <div class="search-btn-wrapper">
       <div class="search-btn">
@@ -14,4 +14,8 @@
       </div>
     </div>
   </form>
+</div>
+
+<div class="professors-list-container" *ngIf="ctrl.professorsByCategory">
+  <h1 class="main-title">Exibindo professores de: <span>Matemática</span></h1>
 </div>
