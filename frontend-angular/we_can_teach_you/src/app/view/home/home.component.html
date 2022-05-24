@@ -1,15 +1,23 @@
 <div class="home-container" *ngIf="!ctrl.professorsByCategory">
   <h1>O que deseja aprender hoje?</h1>
-  <form class="search-for-content" (submit)="ctrl.getProfessorsByCategory(searchContent.value)">
+  <form
+    class="search-for-content"
+    (submit)="ctrl.getProfessorsByCategory(searchContent.value)"
+  >
     <div class="search-wrapper">
       <div>
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <input type="text" id="search-content" #searchContent placeholder="Tente algo como: Matemática ou então Biologia...">
+      <input
+        type="text"
+        id="search-content"
+        #searchContent
+        placeholder="Tente algo como: Matemática ou então Biologia..."
+      />
     </div>
     <div class="search-btn-wrapper">
       <div class="search-btn">
-        <input type="submit" value="Começar a aprender">
+        <input type="submit" value="Começar a aprender" />
         <i class="fa-solid fa-rocket"></i>
       </div>
     </div>
@@ -18,4 +26,64 @@
 
 <div class="professors-list-container" *ngIf="ctrl.professorsByCategory">
   <h1 class="main-title">Exibindo professores de: <span>Matemática</span></h1>
+
+  <div class="professors-list-wrapper">
+    <!-- professor-item-wrapper -->
+    <a href="#" class="professor-item-wrapper-btn">
+      <div
+        class="professor-item-wrapper"
+        *ngFor="let professor of ctrl.professorsByCategory"
+      >
+        <figure
+          class="class-item-img"
+          style="background-image: url('/assets/images/professor.jpg')"
+        ></figure>
+
+        <div class="professor-item-content">
+          <h2>{{ professor.nome }}</h2>
+
+          <h3>{{ professor.nivelEscolaridade }}</h3>
+
+          <!-- TODO: aqui deve vir a descrição -->
+          <p>
+            Exercitation amet elit et mollit et enim. Mollit reprehenderit
+            tempor aliqua adipisicing do consectetur velit cillum. Nulla duis
+            dolore irure tempor sunt aliquip sint ad aliqua ut dolor laborum
+            nulla deserunt. Enim aliqua ipsum est dolore eu aliqua eiusmod
+            pariatur id quis do...
+          </p>
+
+          <!-- TODO: aqui deve vir a classificação -->
+          <div class="professor-classification">
+            <span id="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </span>
+            <span>(1200 avaliações)</span>
+          </div>
+
+          <div class="professor-tags-chat-wrapper">
+            <div class="professor-tags-chat-item">
+              <i class="fa-solid fa-hashtag"></i>
+
+              <!-- TODO: deve retornar as 3 categorias mais bem avaliadas -->
+              <div *ngFor="let category of professor.categorias">
+                <small>{{ category.nome }}</small>
+              </div>
+            </div>
+
+            <div class="professor-tags-chat-item">
+              <a><i class="fa-solid fa-message"></i></a>
+              <small>conversar via</small>
+              <small>chat</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- professor-item-wrapper FIM -->
+  </div>
 </div>

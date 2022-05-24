@@ -8,16 +8,16 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ControllerService {
-  topMenuSearchOpt = true;
-  // professorsByCategory: Professor[] | null = null;
-  professorsByCategory: any = true; // ? gambi para faciltiar o desenvolvimento
+  topMenuSearchOpt = false;
+  professorsByCategory: Professor[] | null = null;
+  // professorsByCategory: any = true; // ? gambi para faciltiar o desenvolvimento
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
   getProfessorsByCategory(searchItem: string) {
 
     if (searchItem == '') {
-      // ! exibir mensagem de erro para o user
+      // TODO: exibir mensagem de erro para o user
     }
 
     this.http.get<Professor[]>(

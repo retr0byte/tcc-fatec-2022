@@ -14,8 +14,8 @@ import { UserProfiles, UserProfilesTranslations, UserProfilesRoutes } from '../e
 export class AuthService {
   api = 'http://localhost:8080';
   // api = 'https://wcty-api.herokuapp.com';
-  // userLogged: Auth | null = null;
-  userLogged: any = true; // ? gambi para faciltiar o desenvolvimento
+  userLogged: Auth | null = null;
+  // userLogged: any = true; // ? gambi para faciltiar o desenvolvimento
   profiles: UserProfiles[] = [ UserProfiles.ALUNO, UserProfiles.PROFESSOR, UserProfiles.FUNCIONARIO ];
   newUser = false;
 
@@ -58,16 +58,16 @@ export class AuthService {
       this.http.post<RegisterResponse>(
         this.api + `/${path}`, requestPkg
       ).subscribe( data => {
-        // ! alertar se deu certo o cadastro ou não, depois de um tempinho fazer o login (caso sucesso)
+        // TODO: alertar se deu certo o cadastro ou não, depois de um tempinho fazer o login (caso sucesso)
         if ( data.nome )
           this.postLogin({ email: requestPkg.email, senha: requestPkg.senha});
         else {
-          // ! RETORNA ERRO
+          // TODO: RETORNA ERRO
          }
        });
 
     } else {
-      // ! RETORNA ERRO
+      // TODO: RETORNA ERRO
     }
 
   }
