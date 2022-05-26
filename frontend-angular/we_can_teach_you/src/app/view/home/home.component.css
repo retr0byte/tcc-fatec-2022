@@ -64,12 +64,11 @@ div.home-container form.search-for-content div.search-btn-wrapper {
 
 div.home-container form.search-for-content div.search-btn {
   width: 300px;
-  display: flex;
-  align-items: center;
-  color: #FFFFFF;
-  background-color: #5D9BF3;
   padding: 5px 15px 5px 5px;
-  border-radius: 10px;
+}
+
+div.home-container form.search-for-content div.search-btn:hover input[type="submit"] {
+  color: #5e9bf3;
 }
 
 div.home-container form.search-for-content div.search-btn input[type="submit"] {
@@ -88,9 +87,7 @@ div.home-container form.search-for-content div.search-btn input[type="submit"] {
 div.professors-list-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 div.professors-list-container h1.main-title span {
@@ -100,22 +97,10 @@ div.professors-list-container h1.main-title span {
 div.professors-list-container div.professors-list-wrapper {
   width:100%;
   height: 100%;
-  display:flex;
-  justify-content: center;
-}
-
-div.professors-list-container div.professors-list-wrapper a.professor-item-wrapper-btn {
-  text-decoration: none;
-  width:100%;
-  height: 100%;
-  display:flex;
-  justify-content: center;
 }
 
 div.professors-list-container div.professors-list-wrapper div.professor-item-wrapper {
   background-color: #FFFFFF;
-  width: calc(100% / 3);
-  max-width: 400px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
@@ -204,5 +189,11 @@ div.professor-item-wrapper div.professor-item-content div.professor-tags-chat-wr
   color: #5E9CF3;
 }
 
+div.professor-item-wrapper div.professor-item-content a.free-professor-class {
+  text-decoration: none;
+  margin: 25px 0 10px 0;
+}
 
-
+div.professor-item-wrapper div.professor-item-content a.free-professor-class i {
+  margin-left: 10px;
+}

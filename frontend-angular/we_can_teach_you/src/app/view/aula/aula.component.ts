@@ -9,13 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 export class AulaComponent implements OnInit {
   classId: string | null = null
   classSubsection: string | null = null;
+  professorId: string | null = null;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.classId = params.get('index');
+      this.classId = params.get('classId');
       this.classSubsection = params.get('subsection');
+      this.professorId = params.get('professorId');
     });
   }
 

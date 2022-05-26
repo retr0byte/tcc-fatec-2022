@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'faq', component: FaqComponent},
   { path: 'minhas-aulas', component: MinhasAulasComponent },
-  { path: 'aula/:index/:subsection', component: AulaComponent }
+  { path: 'aula/:classId/:subsection', component: AulaComponent },
+  { path: 'professor/:professorId/aula/:classId/:subsection', component: AulaComponent },
 ];
 
 @NgModule({

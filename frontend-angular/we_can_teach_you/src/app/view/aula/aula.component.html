@@ -64,7 +64,7 @@
   </div>
 
   <div class="class-menu-wrapper">
-    <nav class="class-menu">
+    <nav class="class-menu" *ngIf="!this.professorId">
       <ul>
         <li>
           <a
@@ -89,6 +89,39 @@
         </li>
         <li>
           <a [routerLink]="['/aula', this.classId, 'marcacoes']" class="{{
+            this.classSubsection === 'marcacoes' ? 'active-menu-page' : ''
+          }}"
+            >Marcações</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="class-menu" *ngIf="this.professorId">
+      <ul>
+        <li>
+          <a
+            [routerLink]="['/professor', this.professorId, 'aula', this.classId, 'materiais']"
+            class="{{
+              this.classSubsection === 'materiais' ? 'active-menu-page' : ''
+            }}"
+            >Materiais de aula</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/professor', this.professorId, 'aula', this.classId, 'chat']" class="{{
+            this.classSubsection === 'chat' ? 'active-menu-page' : ''
+          }}">CHAT</a>
+        </li>
+        <li>
+          <a [routerLink]="['/professor', this.professorId, 'aula', this.classId, 'atividades']" class="{{
+            this.classSubsection === 'atividades' ? 'active-menu-page' : ''
+          }}"
+            >Atividades</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/professor', this.professorId, 'aula', this.classId, 'marcacoes']" class="{{
             this.classSubsection === 'marcacoes' ? 'active-menu-page' : ''
           }}"
             >Marcações</a

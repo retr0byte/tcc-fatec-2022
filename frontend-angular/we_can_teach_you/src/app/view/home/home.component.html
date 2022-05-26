@@ -16,7 +16,7 @@
       />
     </div>
     <div class="search-btn-wrapper">
-      <div class="search-btn">
+      <div class="search-btn default-btn">
         <input type="submit" value="Começar a aprender" />
         <i class="fa-solid fa-rocket"></i>
       </div>
@@ -28,62 +28,79 @@
   <h1 class="main-title">Exibindo professores de: <span>Matemática</span></h1>
 
   <div class="professors-list-wrapper">
-    <!-- professor-item-wrapper -->
-    <a href="#" class="professor-item-wrapper-btn">
-      <div
-        class="professor-item-wrapper"
+
+    <owl-carousel-o [options]="customOptions">
+      <ng-template
+        carouselSlide
         *ngFor="let professor of ctrl.professorsByCategory"
       >
-        <figure
-          class="class-item-img"
-          style="background-image: url('/assets/images/professor.jpg')"
-        ></figure>
+        <div class="professor-item-wrapper">
+            <figure
+              class="class-item-img"
+              style="background-image: url('/assets/images/professor.jpg')"
+            ></figure>
 
-        <div class="professor-item-content">
-          <h2>{{ professor.nome }}</h2>
+            <div class="professor-item-content">
+              <h2>{{ professor.nome }}</h2>
 
-          <h3>{{ professor.nivelEscolaridade }}</h3>
+              <h3>{{ professor.nivelEscolaridade }}</h3>
 
-          <!-- TODO: aqui deve vir a descrição -->
-          <p>
-            Exercitation amet elit et mollit et enim. Mollit reprehenderit
-            tempor aliqua adipisicing do consectetur velit cillum. Nulla duis
-            dolore irure tempor sunt aliquip sint ad aliqua ut dolor laborum
-            nulla deserunt. Enim aliqua ipsum est dolore eu aliqua eiusmod
-            pariatur id quis do...
-          </p>
+              <!-- TODO: aqui deve vir a descrição -->
+              <p>
+                Exercitation amet elit et mollit et enim. Mollit reprehenderit
+                tempor aliqua adipisicing do consectetur velit cillum. Nulla
+                duis dolore irure tempor sunt aliquip sint ad aliqua ut dolor
+                laborum nulla deserunt. Enim aliqua ipsum est dolore eu aliqua
+                eiusmod pariatur id quis do...
+              </p>
 
-          <!-- TODO: aqui deve vir a classificação -->
-          <div class="professor-classification">
-            <span id="stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star-half-stroke"></i>
-            </span>
-            <span>(1200 avaliações)</span>
-          </div>
-
-          <div class="professor-tags-chat-wrapper">
-            <div class="professor-tags-chat-item">
-              <i class="fa-solid fa-hashtag"></i>
-
-              <!-- TODO: deve retornar as 3 categorias mais bem avaliadas -->
-              <div *ngFor="let category of professor.categorias">
-                <small>{{ category.nome }}</small>
+              <!-- TODO: aqui deve vir a classificação -->
+              <div class="professor-classification">
+                <span id="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                </span>
+                <span>(1200 avaliações)</span>
               </div>
-            </div>
 
-            <div class="professor-tags-chat-item">
-              <a><i class="fa-solid fa-message"></i></a>
-              <small>conversar via</small>
-              <small>chat</small>
+              <div class="professor-tags-chat-wrapper">
+                <div class="professor-tags-chat-item">
+                  <i class="fa-solid fa-hashtag"></i>
+
+                  <!-- TODO: deve retornar as 3 categorias mais bem avaliadas -->
+                  <div *ngFor="let category of professor.categorias">
+                    <small>{{ category.nome }}</small>
+                  </div>
+                </div>
+
+                <div class="professor-tags-chat-item">
+                  <a><i class="fa-solid fa-message"></i></a>
+                  <small>conversar via</small>
+                  <small>chat</small>
+                </div>
+              </div>
+
+              <!-- ? a aula 1 de cada professor será sempre a aula grátis -->
+              <a
+                [routerLink]="[
+                  '/professor',
+                  professor.id,
+                  'aula',
+                  1,
+                  'materiais'
+                ]"
+                class="free-professor-class default-btn"
+              >
+                <span>Clique aqui para ver uma aula grátis</span>
+                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+              </a>
             </div>
-          </div>
         </div>
-      </div>
-    </a>
-    <!-- professor-item-wrapper FIM -->
+      </ng-template>
+    </owl-carousel-o>
+    
   </div>
 </div>

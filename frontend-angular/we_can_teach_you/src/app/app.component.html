@@ -53,6 +53,7 @@
             Log in
           </button>
           <button
+            class="default-btn"
             id="form-proceed-btn"
             (click)="
               auth.postRegister({
@@ -82,7 +83,7 @@
         <input type="password" id="password" #password />
 
         <div class="buttons">
-          <button id="form-register-btn" (click)="auth.toggleOptions()">
+          <button class="default-btn" id="form-register-btn" (click)="auth.toggleOptions()">
             Registrar-me
           </button>
           <button
@@ -117,10 +118,13 @@
       </div>
     </div>
 
+    <!-- TODO: Fazer a lógica para utilizar a classe .highlight-item -->
     <div class="w50">
-      <i id="toggle-external-chat" class="fa-solid fa-comment"></i>
+      <a [routerLink]="['/']"><i id="toggle-home" class="fa-solid fa-house"></i></a>
 
-      <i id="toggle-achievements" class="fa-solid fa-trophy"></i>
+      <a><i id="toggle-external-chat" class="fa-solid fa-comment"></i></a>
+
+      <a><i id="toggle-achievements" class="fa-solid fa-trophy"></i></a>
 
       <div id="settings-menu-container">
         <div id="toggle-settings-menu">
@@ -150,6 +154,7 @@
         <a href="#">Minha conta</a>
       </div>
 
+      <!-- TODO: Fazer a lógica para utilizar a classe .highlight-menu -->
       <nav id="main-menu" class="w100">
         <ul class="w100">
           <li class="">
@@ -158,7 +163,7 @@
             >
           </li>
           <li>
-            <a href="#"><i class="fa-regular fa-calendar"></i> Calendário</a>
+            <a><i class="fa-regular fa-calendar"></i> Calendário</a>
           </li>
           <li>
             <a [routerLink]="['/faq']"

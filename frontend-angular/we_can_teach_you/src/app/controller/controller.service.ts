@@ -24,7 +24,7 @@ export class ControllerService {
       this.auth.api + '/professores/categoria/' + searchItem, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( data => { this.professorsByCategory = data;});
+    ).subscribe( data => { this.professorsByCategory = data; });
 
     return false;
   }

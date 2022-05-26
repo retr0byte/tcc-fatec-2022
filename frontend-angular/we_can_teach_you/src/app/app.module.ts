@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,12 +27,14 @@ import { AulaComponent } from './view/aula/aula.component';
     MarcacoesComponent,
     FaqComponent,
     AtividadesComponent,
-    AulaComponent,
+    AulaComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [AuthService, ControllerService],
   bootstrap: [AppComponent]

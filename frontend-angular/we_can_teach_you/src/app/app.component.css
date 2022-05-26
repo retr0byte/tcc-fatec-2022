@@ -132,11 +132,7 @@ main div.form div#form-register .buttons button {
 
 main div.form div#form-login .buttons button#form-register-btn,
 main div.form div#form-register .buttons button#form-proceed-btn {
-  border: none;
-  background-color: #5E9BF3;
-  color: #FFFFFF;
   padding: 10px 20px;
-  border-radius: 10px;
 }
 
 main div.form div#form-login .buttons button.form-login-btn,
@@ -238,8 +234,7 @@ header#top-menu div:last-child {
 }
 
 header#top-menu div:last-child i {
-  font-size: 2rem;
-  margin-right: 25px;
+  font-size: 1.5rem;
   color: #838488;
   cursor: pointer;
 }
