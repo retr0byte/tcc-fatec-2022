@@ -1,9 +1,31 @@
+
+<button id="create-appointment" (click)="this.togleNewAppointment()"><i class="fa-solid fa-circle-plus"></i> Nova marcação</button>
+
+<div class="new-appointment-wrapper" *ngIf="newAppointment">
+  <div class="new-appointment-inner-wrapper">
+    <label for="appointmentTime">Tempo: </label>
+    <input type="time" #appointmentTime id="appointmentTime">
+  </div>
+
+  <div class="new-appointment-inner-wrapper">
+    <label for="appointmentTitle">Título: </label>
+    <input type="text" #appointmentTitle id="appointmentTitle">
+  </div>
+
+  <div class="new-appointment-inner-wrapper">
+    <label for="appointmentDescription">Descrição: </label>
+    <input type="text" #appointmentDescription id="appointmentDescription">
+  </div>
+
+  <button id="save-new-appointment" class="default-btn" (click)="ctrl.postAppointments()">Cadastrar</button>
+</div>
+
 <div class="all-ap">
-    
+
     <div class="appointment">
         <div class="margin">
             <div class="box-time">
-                
+
                 <div class="icon-time">
                     <i class="fa-solid fa-circle-pause"></i>
                 </div>
@@ -15,7 +37,7 @@
             </div>
 
             <div class="info">
-                
+
                 <div class="title">
                     Marcação 1
                 </div>
@@ -27,12 +49,12 @@
             </div>
         </div>
 
-    </div>  
+    </div>
 
     <div class="appointment">
         <div class="margin">
             <div class="box-time">
-                
+
                 <div class="icon-time">
                     <i class="fa-solid fa-circle-pause"></i>
                 </div>
@@ -44,7 +66,7 @@
             </div>
 
             <div class="info">
-                
+
                 <div class="title">
                     Marcação 2
                 </div>
@@ -56,7 +78,7 @@
             </div>
         </div>
 
-    </div>  
+    </div>
 
 </div>
 

@@ -29,6 +29,10 @@ export class ControllerService {
     return false;
   }
 
+  postAppointments(){
+    
+  }
+
 
 
 

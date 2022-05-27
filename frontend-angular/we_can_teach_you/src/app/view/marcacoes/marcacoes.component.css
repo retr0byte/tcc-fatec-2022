@@ -47,3 +47,60 @@
     color: #838488;
     font-style: normal;
 }
+
+/* appointments register */
+
+button#create-appointment {
+  color: #5E9BF3;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-left: 2%;
+}
+
+button#create-appointment:focus { outline: none; }
+
+div.new-appointment-wrapper {
+  width: 100%;
+  padding: 20px 2%;
+  display: flex;
+  border-bottom: 1px solid #0161EB;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper input {
+  background-color: #FFFFFF;
+  color: #838488;
+  padding: 8px 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper:nth-of-type(1) {
+  width: 10%;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper:nth-of-type(2) {
+  width: 30%;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper:nth-of-type(3) {
+  width: 50%;
+}
+
+div.new-appointment-wrapper div.new-appointment-inner-wrapper label {
+  color: #5E9BF3;
+  margin-bottom: 5px;
+}
+
+div.new-appointment-wrapper button#save-new-appointment {
+  cursor: pointer;
+  height: auto;
+}
