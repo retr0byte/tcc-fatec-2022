@@ -7,12 +7,15 @@
     display: flex;
     width: 48%;
     margin: 2%;
-    border-radius: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
 }
 
 .box-time {
     display: flex;
     align-items: center;
+    width: 20%;
 }
 
 .icon-time i {
@@ -23,6 +26,11 @@
 .margin {
     display: flex;
     margin: 2%;
+    width: 100%;
+}
+
+.info {
+  width: 75%;
 }
 
 .time {
@@ -30,10 +38,6 @@
     margin-left: 10px;
     margin-right: 10px;
     font-size: 1.1rem;
-}
-
-.info {
-    margin: 0 0 0 2%;
 }
 
 .title {
@@ -46,6 +50,23 @@
     font-size: 0.9rem;
     color: #838488;
     font-style: normal;
+}
+
+div.delete-btn-wrapper {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.delete {
+  background-color: transparent;
+  color: #f35e5e;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 /* appointments register */

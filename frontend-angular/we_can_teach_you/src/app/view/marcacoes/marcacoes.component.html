@@ -4,25 +4,25 @@
 <div class="new-appointment-wrapper" *ngIf="newAppointment">
   <div class="new-appointment-inner-wrapper">
     <label for="appointmentTime">Tempo: </label>
-    <input type="time" #appointmentTime id="appointmentTime">
+    <input type="time" [(ngModel)]="appointmentTime">
   </div>
 
   <div class="new-appointment-inner-wrapper">
     <label for="appointmentTitle">Título: </label>
-    <input type="text" #appointmentTitle id="appointmentTitle">
+    <input type="text" [(ngModel)]="appointmentTitle">
   </div>
 
   <div class="new-appointment-inner-wrapper">
     <label for="appointmentDescription">Descrição: </label>
-    <input type="text" #appointmentDescription id="appointmentDescription">
+    <input type="text" [(ngModel)]="appointmentDescription">
   </div>
 
-  <button id="save-new-appointment" class="default-btn" (click)="ctrl.postAppointments()">Cadastrar</button>
+  <button id="save-new-appointment" class="default-btn" (click)="this.cadAppointment()">Cadastrar</button>
 </div>
 
 <div class="all-ap">
 
-    <div class="appointment">
+    <div class="appointment" *ngFor="let appointment of ctrl.appointmentsByClass">
         <div class="margin">
             <div class="box-time">
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="time">
-                    00:30:00
+                    {{appointment.momentoMarcacao}}
                 </div>
 
             </div>
@@ -39,46 +39,24 @@
             <div class="info">
 
                 <div class="title">
-                    Marcação 1
+                  {{appointment.nome}}
                 </div>
 
                 <div class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  {{appointment.descricao}}
                 </div>
 
+            </div>
+
+            <div class="delete-btn-wrapper">
+              <button class="delete" (click)="ctrl.deleteAppointment( appointment.id, this.classId )">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
             </div>
         </div>
 
     </div>
 
-    <div class="appointment">
-        <div class="margin">
-            <div class="box-time">
-
-                <div class="icon-time">
-                    <i class="fa-solid fa-circle-pause"></i>
-                </div>
-
-                <div class="time">
-                    00:30:00
-                </div>
-
-            </div>
-
-            <div class="info">
-
-                <div class="title">
-                    Marcação 2
-                </div>
-
-                <div class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 
 </div>
 

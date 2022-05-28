@@ -15,7 +15,6 @@ export class AuthService {
   api = 'http://localhost:8080';
   // api = 'https://wcty-api.herokuapp.com';
   userLogged: Auth | null = null;
-  // userLogged: any = true; // ? gambi para faciltiar o desenvolvimento
   profiles: UserProfiles[] = [ UserProfiles.ALUNO, UserProfiles.PROFESSOR, UserProfiles.FUNCIONARIO ];
   newUser = false;
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
@@ -34,7 +35,8 @@ import { AulaComponent } from './view/aula/aula.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
   providers: [AuthService, ControllerService],
   bootstrap: [AppComponent]
