@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.fatec.we_can_teach_you.dto.MarcacaoDTO;
+import br.fatec.we_can_teach_you.exception.AuthorizationException;
+import br.fatec.we_can_teach_you.security.JWTUtil;
 import br.fatec.we_can_teach_you.service.MarcacaoService;
 
 @RestController
@@ -26,6 +28,9 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     
     @Autowired
     private MarcacaoService service;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @Override
 	@GetMapping
@@ -42,6 +47,15 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    @GetMapping("/aula/{aulaId}/aluno/{alunoId}")
+    public ResponseEntity<List<MarcacaoDTO>> getByAlunoAndAula(@PathVariable Long aulaId, @PathVariable Long alunoId) throws AuthorizationException {
+		if (!jwtUtil.authorized( alunoId )) {
+			throw new AuthorizationException("Acesso negado!");
+		}
+
+        return ResponseEntity.ok(service.findByAlunoAndAula(aulaId, alunoId));
+	}
 
     @Override
     @PostMapping
@@ -63,6 +77,17 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     @Override
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        if (service.delete(id)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+    
+    @DeleteMapping("/{id}/aluno/{alunoId}")
+    public ResponseEntity<?> deleteFromStudent(@PathVariable("id") Long id, @PathVariable("alunoId") Long alunoId) throws AuthorizationException {
+        if (!jwtUtil.authorized(alunoId)) {
+			throw new AuthorizationException("Acesso negado!");
+		}
         if (service.delete(id)) {
             return ResponseEntity.ok().build();
         }

@@ -34,6 +34,11 @@ public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
         return null;
     }
 
+    public List<MarcacaoDTO> findByAlunoAndAula(Long alunoId, Long aulaId) {
+        List<Marcacao> getInfo = repository.findByAlunoAndAula(alunoId, aulaId);
+        return mapper.toDTO(getInfo);
+    }
+
     @Override
     public List<MarcacaoDTO> findAll() {
         return mapper.toDTO(repository.findAll());
