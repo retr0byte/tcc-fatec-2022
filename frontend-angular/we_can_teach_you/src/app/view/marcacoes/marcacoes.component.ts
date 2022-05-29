@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+
+import { AlertsService } from 'src/app/controller/alerts.service';
 import { ControllerService } from 'src/app/controller/controller.service';
+
 import { Marcacoes } from 'src/app/model/Marcacoes';
 
 @Component({
@@ -16,7 +19,7 @@ export class MarcacoesComponent implements OnInit {
 
   @Input() classId!: string | null;
 
-  constructor(public ctrl: ControllerService) { }
+  constructor(public ctrl: ControllerService, public alerts: AlertsService) { }
 
   ngOnInit(): void {
     this.ctrl.getAppointments( this.classId )
@@ -28,7 +31,7 @@ export class MarcacoesComponent implements OnInit {
 
   cadAppointment() {
     if ( this.appointmentTime == '' || this.appointmentTitle == '' || this.appointmentDescription == '' || this.classId ) {
-      // TODO: exibir mensagem de erro para o user
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Missing needed data.' });
     }
 
     this.ctrl.postAppointment({

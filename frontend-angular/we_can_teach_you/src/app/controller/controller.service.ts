@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AuthService } from './auth.service';
+import { AlertsService } from './alerts.service';
 
 import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
@@ -14,20 +15,27 @@ export class ControllerService {
   professorsByCategory: Professor[] | null = null;
   appointmentsByClass: MarcacoesResponse[][] | null = null;
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
 
   // CRUD PROFESSORS
   getProfessorsByCategory(searchItem: string) {
 
     if (searchItem == '') {
-      // TODO: exibir mensagem de erro para o user
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
     }
 
     this.http.get<Professor[]>(
       this.auth.api + '/professores/categoria/' + searchItem, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( data => { this.professorsByCategory = data; });
+    ).subscribe(
+        (data) => {
+          this.professorsByCategory = data;
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
 
     return false;
   }
@@ -35,36 +43,41 @@ export class ControllerService {
   // CRUD APPOINTMENTS
   getAppointments(classId: string | null) {
     if (classId == '') {
-      // TODO: exibir mensagem de erro para o user
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
     }
 
     this.http.get<MarcacoesResponse[]>(
       this.auth.api + '/marcacoes/aula/' + classId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( data => {
-      let newArr = [];
-      let tempArr: any = [];
-      let cont = 0;
-      for (const appointment of data) {
-        if(cont < 2) {
-          tempArr.push(appointment);
-          cont++;
-        }else{
-          newArr.push(tempArr);
-          tempArr = [];
-          cont=1;
-          tempArr.push(appointment);
+    ).subscribe(
+      (data) => {
+        let newArr = [];
+        let tempArr: any = [];
+        let cont = 0;
+        for (const appointment of data) {
+          if(cont < 2) {
+            tempArr.push(appointment);
+            cont++;
+          }else{
+            newArr.push(tempArr);
+            tempArr = [];
+            cont=1;
+            tempArr.push(appointment);
+          }
         }
-      }
 
-      if(tempArr.length > 0) {
-        newArr.push(tempArr)
-        tempArr = [];
-      }
+        if(tempArr.length > 0) {
+          newArr.push(tempArr)
+          tempArr = [];
+        }
 
-      this.appointmentsByClass = newArr;
-    });
+        this.appointmentsByClass = newArr;
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
 
   }
 
@@ -82,28 +95,34 @@ export class ControllerService {
       this.auth.api + '/marcacoes', requestPkg, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
       }
-    ).subscribe( data => {
-      if (data.nome) {
-        this.getAppointments(appointmentInfo.classId);
-      } else {
-        // TODO: RETORNA ERRO
+    ).subscribe(
+      (data) => {
+        this.getAppointments( appointmentInfo.classId );
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
       }
-    });
+    );
   }
 
   // ! dando erro de cors? (pelo insomnia vai normal e retorna com o allow-origins!?)
   deleteAppointment( appointmentId: number, classId: string | null ) {
     if (appointmentId) {
-      // TODO: exibir mensagem de erro para o user
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
     }
 
     this.http.delete(
       this.auth.api + '/marcacoes/' + appointmentId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( () => {
-      this.getAppointments( classId );
-    });
+    ).subscribe(
+      (data) => {
+        this.getAppointments( classId );
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
   }
 
 

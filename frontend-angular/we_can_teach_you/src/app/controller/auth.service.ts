@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { AlertsService } from './alerts.service';
+
 import { Auth } from '../model/Auth';
 import { Login } from '../model/Login';
 import { Profiles } from '../model/Profiles';
@@ -18,7 +20,7 @@ export class AuthService {
   profiles: UserProfiles[] = [ UserProfiles.ALUNO, UserProfiles.PROFESSOR, UserProfiles.FUNCIONARIO ];
   newUser = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public alerts: AlertsService) {}
 
   toggleOptions(){
     this.newUser = !this.newUser;
@@ -35,12 +37,25 @@ export class AuthService {
     return routePath;
   }
 
-  postLogin( userInfo: Login ){
+  postLogin( userInfo: Login, welcomeAlert = true ){
     this.http.post<Auth>(
       this.api + '/login', userInfo
-    ).subscribe( (data: Auth) => {
-      this.userLogged = data;
-    });
+    ).subscribe(
+      (data) => {
+        if( welcomeAlert )
+          this.alerts.showAlertSuccess({
+            title: `Bem vindo: ${data.username}`,
+            message: 'É bom ter você de volta :)'
+          });
+
+        setTimeout(() => {
+          this.userLogged = data;
+        }, 1500)
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
   }
 
   postRegister( userData: Register ) {
@@ -56,17 +71,23 @@ export class AuthService {
 
       this.http.post<RegisterResponse>(
         this.api + `/${path}`, requestPkg
-      ).subscribe( data => {
-        // TODO: alertar se deu certo o cadastro ou não, depois de um tempinho fazer o login (caso sucesso)
-        if ( data.nome )
-          this.postLogin({ email: requestPkg.email, senha: requestPkg.senha});
-        else {
-          // TODO: RETORNA ERRO
-         }
-       });
+      ).subscribe(
+        (data) => {
+          this.alerts.showAlertSuccess({
+            title: 'Parabéns:',
+            message: 'Você efetuou seu cadastro na plataforma e já pode começar a aprender... Em 5s você será redirecionado(a) para a página principal. Obrigado(a)!'
+          });
+          setTimeout(() => {
+            this.postLogin({ email: requestPkg.email, senha: requestPkg.senha}, false);
+          }, 5000)
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+       );
 
     } else {
-      // TODO: RETORNA ERRO
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'As senhas informadas, não coincidem. Por favor, ajuste-as e tente novamente.' });
     }
 
   }

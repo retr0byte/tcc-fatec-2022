@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { MinhasAulasComponent } from './view/minhas-aulas/minhas-aulas.component
 import { MarcacoesComponent } from './view/marcacoes/marcacoes.component';
 import { AtividadesComponent } from './view/atividades/atividades.component';
 import { AulaComponent } from './view/aula/aula.component';
+import { AlertModalComponent } from './view/alert-modal/alert-modal.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { AulaComponent } from './view/aula/aula.component';
     MarcacoesComponent,
     FaqComponent,
     AtividadesComponent,
-    AulaComponent
+    AulaComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +39,11 @@ import { AulaComponent } from './view/aula/aula.component';
     AppRoutingModule,
     HttpClientModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [AuthService, ControllerService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AlertModalComponent]
 })
 export class AppModule { }

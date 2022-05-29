@@ -1,0 +1,15 @@
+.no-margin {
+  margin-bottom: 0;
+}
+
+.alert {
+  display: flex;
+  justify-content: space-between;
+}
+
+.alert button {
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  font-size: 1.5rem;
+}
