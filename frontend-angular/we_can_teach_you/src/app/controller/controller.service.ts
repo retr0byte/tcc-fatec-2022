@@ -12,7 +12,7 @@ import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcaco
 export class ControllerService {
   topMenuSearchOpt = false;
   professorsByCategory: Professor[] | null = null;
-  appointmentsByClass: MarcacoesResponse[] | null = null;
+  appointmentsByClass: MarcacoesResponse[][] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
@@ -34,16 +34,37 @@ export class ControllerService {
 
   // CRUD APPOINTMENTS
   getAppointments(classId: string | null) {
-
     if (classId == '') {
       // TODO: exibir mensagem de erro para o user
     }
 
     this.http.get<MarcacoesResponse[]>(
-      this.auth.api + '/marcacoes/aula/' + classId, {
+      this.auth.api + '/marcacoes/aula/' + classId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( data => { this.appointmentsByClass = data; });
+    ).subscribe( data => {
+      let newArr = [];
+      let tempArr: any = [];
+      let cont = 0;
+      for (const appointment of data) {
+        if(cont < 2) {
+          tempArr.push(appointment);
+          cont++;
+        }else{
+          newArr.push(tempArr);
+          tempArr = [];
+          cont=1;
+          tempArr.push(appointment);
+        }
+      }
+
+      if(tempArr.length > 0) {
+        newArr.push(tempArr)
+        tempArr = [];
+      }
+
+      this.appointmentsByClass = newArr;
+    });
 
   }
 
@@ -70,16 +91,17 @@ export class ControllerService {
     });
   }
 
+  // ! dando erro de cors? (pelo insomnia vai normal e retorna com o allow-origins!?)
   deleteAppointment( appointmentId: number, classId: string | null ) {
     if (appointmentId) {
       // TODO: exibir mensagem de erro para o user
     }
 
-    this.http.delete<Professor[]>(
-      this.auth.api + '/marcacoes/' + appointmentId, {
+    this.http.delete(
+      this.auth.api + '/marcacoes/' + appointmentId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
-    ).subscribe( data => {
+    ).subscribe( () => {
       this.getAppointments( classId );
     });
   }
