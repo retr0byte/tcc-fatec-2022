@@ -12,7 +12,7 @@ import { ControllerService } from 'src/app/controller/controller.service';
 export class HomeComponent implements OnInit {
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
