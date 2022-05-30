@@ -10,6 +10,9 @@ import br.fatec.we_can_teach_you.model.Aula;
 public interface AulaRepository extends JpaRepository<Aula, Long> {
     
     @Query("SELECT a FROM Aula a JOIN FETCH a.alunos aluno WHERE aluno.id = ?1")
-    List<Aula>findAulaByAluno(Long alunoId);
+    List<Aula> findAulasByAluno(Long alunoId);
+    
+    @Query("SELECT a FROM Aula a JOIN FETCH a.alunos aluno WHERE aluno.id = ?1 AND a.id = ?2")
+    Aula findAulaByAluno(Long alunoId, Long aulaId);
 
 }

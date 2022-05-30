@@ -45,9 +45,18 @@ public class AulaController implements ControllerInterface<AulaDTO>{
     }
     
     @GetMapping("/aluno/{alunoId}")
-	public ResponseEntity<List<AulaDTO>> getAulaByAluno(@PathVariable("alunoId") Long alunoId) {
+	public ResponseEntity<List<AulaDTO>> getAulasByAluno(@PathVariable("alunoId") Long alunoId) {
 		try {
-            return ResponseEntity.ok(service.findAulaByAluno(alunoId));
+            return ResponseEntity.ok(service.findAulasByAluno(alunoId));
+        } catch (AuthorizationException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
+	}
+    
+    @GetMapping("{aulaId}/aluno/{alunoId}")
+	public ResponseEntity<AulaDTO> getAulaByAluno(@PathVariable("aulaId") Long aulaId, @PathVariable("alunoId") Long alunoId) {
+		try {
+            return ResponseEntity.ok(service.findAulaByAluno(alunoId, aulaId));
         } catch (AuthorizationException e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}

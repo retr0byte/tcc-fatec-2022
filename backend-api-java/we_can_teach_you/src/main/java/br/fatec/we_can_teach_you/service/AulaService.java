@@ -40,11 +40,18 @@ public class AulaService implements ServiceInterface<AulaDTO>{
         return null;
     }
 
-    public List<AulaDTO> findAulaByAluno(Long alunoId) throws AuthorizationException {
+    public List<AulaDTO> findAulasByAluno(Long alunoId) throws AuthorizationException {
         if (!jwtUtil.authorized(alunoId)) {
 			throw new AuthorizationException("Acesso negado!");
 		}
-        return mapper.toDTO(repository.findAulaByAluno(alunoId));
+        return mapper.toDTO(repository.findAulasByAluno(alunoId));
+    }
+    
+    public AulaDTO findAulaByAluno(Long alunoId, Long aulaId) throws AuthorizationException {
+        if (!jwtUtil.authorized(alunoId)) {
+			throw new AuthorizationException("Acesso negado!");
+		}
+        return mapper.toDTO(repository.findAulaByAluno(alunoId, aulaId));
     }
 
     @Override
