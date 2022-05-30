@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.fatec.we_can_teach_you.dto.MarcacaoDTO;
+import br.fatec.we_can_teach_you.exception.AuthorizationException;
 import br.fatec.we_can_teach_you.mapper.MarcacaoMapper;
 import br.fatec.we_can_teach_you.model.Marcacao;
 import br.fatec.we_can_teach_you.repository.MarcacaoRepository;
+import br.fatec.we_can_teach_you.security.JWTUtil;
 
 @Service
 public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
@@ -18,6 +20,9 @@ public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
 
     @Autowired
     private MarcacaoMapper mapper;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @Override
     public MarcacaoDTO create(MarcacaoDTO obj) {
@@ -34,7 +39,10 @@ public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
         return null;
     }
 
-    public List<MarcacaoDTO> findByAlunoAndAula(Long alunoId, Long aulaId) {
+    public List<MarcacaoDTO> findByAlunoAndAula(Long alunoId, Long aulaId) throws AuthorizationException {
+        if (!jwtUtil.authorized( alunoId )) {
+			throw new AuthorizationException("Acesso negado!");
+		}
         List<Marcacao> getInfo = repository.findByAlunoAndAula(alunoId, aulaId);
         return mapper.toDTO(getInfo);
     }
@@ -53,6 +61,18 @@ public class MarcacaoService  implements ServiceInterface<MarcacaoDTO>{
         return false;
     }
 
+    public boolean deleteFromStudent(Long id, Long alunoId) throws AuthorizationException {
+        if (!jwtUtil.authorized( alunoId )) {
+			throw new AuthorizationException("Acesso negado!");
+		}
+
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+   
     @Override
     public boolean delete(Long id) {
         if (repository.existsById(id)) {
