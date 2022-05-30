@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.fatec.we_can_teach_you.dto.AulaDTO;
+import br.fatec.we_can_teach_you.exception.AuthorizationException;
 import br.fatec.we_can_teach_you.service.AulaService;
 
 @RestController
@@ -42,6 +43,15 @@ public class AulaController implements ControllerInterface<AulaDTO>{
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    
+    @GetMapping("/aluno/{alunoId}")
+	public ResponseEntity<List<AulaDTO>> getAulaByAluno(@PathVariable("alunoId") Long alunoId) {
+		try {
+            return ResponseEntity.ok(service.findAulaByAluno(alunoId));
+        } catch (AuthorizationException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
+	}
 
     @Override
     @PostMapping

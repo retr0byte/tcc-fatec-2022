@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.fatec.we_can_teach_you.model.Aluno;
 import br.fatec.we_can_teach_you.model.Categoria;
@@ -36,7 +38,11 @@ public class AulaDTO {
 
     private Categoria categoria;
     
+    @Getter(onMethod = @__(@JsonIgnore))
+	@Setter(onMethod = @__(@JsonProperty))
     private List<Aluno> alunos;
 
+    @Getter(onMethod = @__(@JsonIgnore))
+	@Setter(onMethod = @__(@JsonProperty))
     private Professor professor;
 }

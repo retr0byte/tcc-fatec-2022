@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.fatec.we_can_teach_you.dto.AulaDTO;
+import br.fatec.we_can_teach_you.exception.AuthorizationException;
 import br.fatec.we_can_teach_you.mapper.AulaMapper;
 import br.fatec.we_can_teach_you.model.Aula;
 import br.fatec.we_can_teach_you.repository.AulaRepository;
+import br.fatec.we_can_teach_you.security.JWTUtil;
 
 @Service
 public class AulaService implements ServiceInterface<AulaDTO>{
@@ -19,6 +21,9 @@ public class AulaService implements ServiceInterface<AulaDTO>{
 
     @Autowired
     private AulaMapper mapper;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @Override
     public AulaDTO create(AulaDTO obj) {
@@ -33,6 +38,13 @@ public class AulaService implements ServiceInterface<AulaDTO>{
             return mapper.toDTO(obj.get());
         }
         return null;
+    }
+
+    public List<AulaDTO> findAulaByAluno(Long alunoId) throws AuthorizationException {
+        if (!jwtUtil.authorized(alunoId)) {
+			throw new AuthorizationException("Acesso negado!");
+		}
+        return mapper.toDTO(repository.findAulaByAluno(alunoId));
     }
 
     @Override
