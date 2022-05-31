@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +29,14 @@ public class AtividadeController implements ControllerInterface<AtividadeDTO>{
 
     @Override
 	@GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<List<AtividadeDTO>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
     @Override
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         AtividadeDTO obj = service.findById(id);
         if (obj != null){
@@ -44,6 +47,7 @@ public class AtividadeController implements ControllerInterface<AtividadeDTO>{
 
     @Override
     @PostMapping
+    @PreAuthorize("hasAnyRole('[ADMIN, PROFESSOR]')")
     public ResponseEntity<AtividadeDTO> post(@RequestBody AtividadeDTO obj) throws URISyntaxException {
         AtividadeDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -52,6 +56,7 @@ public class AtividadeController implements ControllerInterface<AtividadeDTO>{
 
     @Override
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> put(@RequestBody AtividadeDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
@@ -61,6 +66,7 @@ public class AtividadeController implements ControllerInterface<AtividadeDTO>{
 
     @Override
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();

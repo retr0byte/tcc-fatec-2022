@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,14 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
 
     @Override
 	@GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<List<MarcacaoDTO>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
     @Override
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         MarcacaoDTO obj = service.findById(id);
         if (obj != null){
@@ -45,6 +48,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     }
 
     @GetMapping("/aula/{aulaId}/aluno/{alunoId}")
+    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
     public ResponseEntity<List<MarcacaoDTO>> getByAlunoAndAula(@PathVariable Long aulaId, @PathVariable Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findByAlunoAndAula(aulaId, alunoId));
@@ -55,6 +59,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
 
     @Override
     @PostMapping
+    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
     public ResponseEntity<MarcacaoDTO> post(@RequestBody MarcacaoDTO obj) throws URISyntaxException {
         MarcacaoDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -63,6 +68,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
 
     @Override
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> put(@RequestBody MarcacaoDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
@@ -72,6 +78,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
 
     @Override
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();
@@ -80,6 +87,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     }
     
     @DeleteMapping("/{id}/aluno/{alunoId}")
+    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
     public ResponseEntity<?> deleteFromStudent(@PathVariable("id") Long id, @PathVariable("alunoId") Long alunoId) {
         try {
             if (service.deleteFromStudent(id, alunoId)) {

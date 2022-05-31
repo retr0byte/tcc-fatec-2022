@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,14 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 
     @Override
 	@GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<List<AulaDTO>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
     @Override
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         AulaDTO obj = service.findById(id);
         if (obj != null){
@@ -45,6 +48,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
     }
     
     @GetMapping("/aluno/{alunoId}")
+    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
 	public ResponseEntity<List<AulaDTO>> getAulasByAluno(@PathVariable("alunoId") Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findAulasByAluno(alunoId));
@@ -54,6 +58,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 	}
     
     @GetMapping("{aulaId}/aluno/{alunoId}")
+    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
 	public ResponseEntity<AulaDTO> getAulaByAluno(@PathVariable("aulaId") Long aulaId, @PathVariable("alunoId") Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findAulaByAluno(alunoId, aulaId));
@@ -64,6 +69,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 
     @Override
     @PostMapping
+    @PreAuthorize("hasAnyRole('[ ADMIN, PROFESSOR ]')")
     public ResponseEntity<AulaDTO> post(@RequestBody AulaDTO obj) throws URISyntaxException {
         AulaDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -72,6 +78,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 
     @Override
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> put(@RequestBody AulaDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
@@ -81,6 +88,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 
     @Override
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();

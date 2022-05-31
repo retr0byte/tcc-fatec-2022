@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,12 +30,14 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
 	@GetMapping
+    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
 	public ResponseEntity<List<CategoriaDTO>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
     @Override
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         CategoriaDTO obj = service.findById(id);
         if (obj != null){
@@ -45,6 +48,7 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
     @PostMapping
+    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
     public ResponseEntity<CategoriaDTO> post(@RequestBody CategoriaDTO obj) throws URISyntaxException {
         CategoriaDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -53,6 +57,7 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
     @PutMapping
+    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
     public ResponseEntity<?> put(@RequestBody CategoriaDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
@@ -62,6 +67,7 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();
