@@ -52,7 +52,7 @@ public class ProfessorController implements ControllerInterface<ProfessorDTO> {
     }
     
     @GetMapping("/categoria/{category}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
     public ResponseEntity<?> getByCategory(@PathVariable("category") String category) {
         return ResponseEntity.ok(service.findByCategory(category));
     }

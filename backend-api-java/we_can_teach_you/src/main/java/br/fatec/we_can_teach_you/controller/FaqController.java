@@ -36,7 +36,7 @@ public class FaqController implements ControllerInterface<FaqDTO>{
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         FaqDTO obj = service.findById(id);
         if (obj != null){
@@ -47,7 +47,7 @@ public class FaqController implements ControllerInterface<FaqDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<FaqDTO> post(@RequestBody FaqDTO obj) throws URISyntaxException {
         FaqDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -56,7 +56,7 @@ public class FaqController implements ControllerInterface<FaqDTO>{
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<?> put(@RequestBody FaqDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
@@ -66,7 +66,7 @@ public class FaqController implements ControllerInterface<FaqDTO>{
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('[ ADMIN ]')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();

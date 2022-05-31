@@ -48,7 +48,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     }
 
     @GetMapping("/aula/{aulaId}/aluno/{alunoId}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
     public ResponseEntity<List<MarcacaoDTO>> getByAlunoAndAula(@PathVariable Long aulaId, @PathVariable Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findByAlunoAndAula(aulaId, alunoId));
@@ -59,7 +59,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
     public ResponseEntity<MarcacaoDTO> post(@RequestBody MarcacaoDTO obj) throws URISyntaxException {
         MarcacaoDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -87,7 +87,7 @@ public class MarcacaoController implements ControllerInterface<MarcacaoDTO>{
     }
     
     @DeleteMapping("/{id}/aluno/{alunoId}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
     public ResponseEntity<?> deleteFromStudent(@PathVariable("id") Long id, @PathVariable("alunoId") Long alunoId) {
         try {
             if (service.deleteFromStudent(id, alunoId)) {
