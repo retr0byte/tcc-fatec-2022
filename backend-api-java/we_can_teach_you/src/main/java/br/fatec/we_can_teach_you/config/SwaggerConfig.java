@@ -14,7 +14,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI weCanTeachYouOpenAPI() {
         return new OpenAPI().info(new Info()
-            .title("API do Projeto Finanças da FATEC") .description("We Can Teach You - API")
+            .title("We Can Teach You - API") .description("TCC do curso de Sistemas para a Internet da FATEC Rubens Lara")
             .version("v0.0.1")
             .contact(new Contact()
                 .name("Gabriel Castro da Silva | Gustavo Costa Arakaki | Luca Pedro de Oliveira").email("dev.gbcproject@gmail.com"))
