@@ -7,6 +7,7 @@ import { AlertsService } from './alerts.service';
 import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
 import { Aula, AulaResponse } from '../model/Aula';
+import { Faq } from 'src/app/model/Faq';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,8 @@ export class ControllerService {
 
   
 
+
+  faqs: Faq[] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
 
@@ -130,6 +133,25 @@ export class ControllerService {
       }
     );
   }
+    
+  //CRUD FAQ
+  getFaqs() {
+
+    this.http.get<Faq[]>(
+      this.auth.api + '/faq', {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+        (data) => {
+          this.faqs = data;
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
+
+    return false;
+  }
 
   // CRUD AULA
   getAula(classId: string | null) {
@@ -163,6 +185,7 @@ export class ControllerService {
           newArr.push(tempArr)
           tempArr = [];
         }
+  
 
         this.AulaById = newArr;
       },
