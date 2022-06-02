@@ -48,7 +48,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
     }
     
     @GetMapping("/aluno/{alunoId}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
 	public ResponseEntity<List<AulaDTO>> getAulasByAluno(@PathVariable("alunoId") Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findAulasByAluno(alunoId));
@@ -58,7 +58,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 	}
     
     @GetMapping("{aulaId}/aluno/{alunoId}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO')")
 	public ResponseEntity<AulaDTO> getAulaByAluno(@PathVariable("aulaId") Long aulaId, @PathVariable("alunoId") Long alunoId) {
 		try {
             return ResponseEntity.ok(service.findAulaByAluno(alunoId, aulaId));
@@ -69,7 +69,7 @@ public class AulaController implements ControllerInterface<AulaDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, PROFESSOR ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSOR')")
     public ResponseEntity<AulaDTO> post(@RequestBody AulaDTO obj) throws URISyntaxException {
         AulaDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();

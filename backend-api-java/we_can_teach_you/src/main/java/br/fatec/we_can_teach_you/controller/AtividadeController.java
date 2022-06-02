@@ -47,7 +47,7 @@ public class AtividadeController implements ControllerInterface<AtividadeDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ADMIN, PROFESSOR]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSOR')")
     public ResponseEntity<AtividadeDTO> post(@RequestBody AtividadeDTO obj) throws URISyntaxException {
         AtividadeDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();

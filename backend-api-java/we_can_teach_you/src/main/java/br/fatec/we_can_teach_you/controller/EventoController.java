@@ -47,7 +47,7 @@ public class EventoController implements ControllerInterface<EventoDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, ALUNO, PROFESSOR ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'ALUNO', 'PROFESSOR')")
     public ResponseEntity<EventoDTO> post(@RequestBody EventoDTO obj) throws URISyntaxException {
         EventoDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();

@@ -30,14 +30,14 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
 	@GetMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
 	public ResponseEntity<List<CategoriaDTO>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         CategoriaDTO obj = service.findById(id);
         if (obj != null){
@@ -48,7 +48,7 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<CategoriaDTO> post(@RequestBody CategoriaDTO obj) throws URISyntaxException {
         CategoriaDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
@@ -57,7 +57,7 @@ public class CategoriaController implements ControllerInterface<CategoriaDTO>{
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('[ ADMIN, FUNCIONARIO ]')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<?> put(@RequestBody CategoriaDTO obj) {
         if (service.update(obj)) {
             return ResponseEntity.ok(obj);
