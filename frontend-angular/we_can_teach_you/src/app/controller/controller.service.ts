@@ -17,11 +17,6 @@ export class ControllerService {
   professorsByCategory: Professor[] | null = null;
   appointmentsByClass: MarcacoesResponse[][] | null = null;
   AulaById: AulaResponse[][] | null = null;
-  aula: Aula[] | null = null;
-
-  
-
-
   faqs: Faq[] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
@@ -194,26 +189,6 @@ export class ControllerService {
       }
     );
 
-
-  }
-
-  getAulaDetalhe(classId: string | null) {
-    if (classId == '') {
-      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
-    }
-
-    this.http.get<Aula[]>(
-      this.auth.api + '/aulas/' + classId + '/aluno/' + this.auth.userLogged!.userId, {
-        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
-      }
-    ).subscribe(
-        (data) => {
-          this.aula = data;
-        },
-        (error) => {
-          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
-        }
-      );
 
   }
 

@@ -2,7 +2,7 @@ import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ControllerService } from 'src/app/controller/controller.service';
-import { Aula, AulaResponse } from 'src/app/model/Aula';
+
 
 
 @Component({
@@ -25,8 +25,6 @@ export class AulaComponent implements OnInit {
       this.classSubsection = params.get('subsection');
       this.professorId = params.get('professorId');
     });
-
-    this.ctrl.getAulaDetalhe(this.classId)
     
   }
 
