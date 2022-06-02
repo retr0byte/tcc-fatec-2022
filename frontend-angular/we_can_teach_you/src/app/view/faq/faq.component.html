@@ -5,18 +5,18 @@
         <input type="text" name="pesquisa-faq" id="pesquisa-faq" placeholder="Qual sua dúvida?">
     </div>
     <div class="perguntasTodas">
-      <div class="faqItem">
+      <div class="faqItem" *ngFor="let f of ctrl.faqs">
         <div class="pergunta">
             <div>
                 <i class="fa-solid fa-circle-question fa-2x"></i>
-                <span>asdasdasd</span>
+                <span>{{f.tituloPergunta}}</span>
             </div>
 
             <i class="fas fa-chevron-down"></i>
         </div>
         <div class="resposta">
             <p class="p-faq">
-              <span>asdasdasd</span>
+              <span>{{f.respostaPergunta}}</span>
             </p>
         </div>
     </div>
