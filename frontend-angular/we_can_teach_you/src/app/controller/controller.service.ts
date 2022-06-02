@@ -19,11 +19,6 @@ export class ControllerService {
 
   // CRUD PROFESSORS
   getProfessorsByCategory(searchItem: string) {
-
-    if (searchItem == '') {
-      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
-    }
-
     this.http.get<Professor[]>(
       this.auth.api + '/professores/categoria/' + searchItem, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
@@ -42,10 +37,6 @@ export class ControllerService {
 
   // CRUD APPOINTMENTS
   getAppointments(classId: string | null) {
-    if (classId == '') {
-      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
-    }
-
     this.http.get<MarcacoesResponse[]>(
       this.auth.api + '/marcacoes/aula/' + classId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
@@ -105,12 +96,7 @@ export class ControllerService {
     );
   }
 
-  // ! dando erro de cors? (pelo insomnia vai normal e retorna com o allow-origins!?)
   deleteAppointment( appointmentId: number, classId: string | null ) {
-    if (appointmentId) {
-      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
-    }
-
     this.http.delete(
       this.auth.api + '/marcacoes/' + appointmentId + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
