@@ -16,29 +16,29 @@
   <input type="date" id="date-filter" />
 </div>
 
-<section class="classes-wrapper" *ngFor="let aulasGroup of aulas">
-  <div class="class-item" *ngFor="let aula of aulasGroup">
+
+<section class="classes-wrapper" *ngFor="let aulas of ctrl.AulaById">
+  <div class="class-item" *ngFor="let aula of aulas">
     <figure
       class="class-item-img"
-      style="background-image: url({{aula.img}})"
+      style="background-image: url('assets/images/aula.jpg')"
     ></figure>
 
     <div class="class-item-content">
-      <h2>{{aula.name}}</h2>
-
+      <h2>{{aula.nome}}</h2>
       <p>
-        {{aula.description}}
+        {{aula.descricao}}
       </p>
 
       <div class="class-item-infos-wrapper">
         <div class="class-item-info">
           <i class="fa-solid fa-calendar-days"></i>
-          <span>{{aula.date}}</span>
+          <span>{{aula.dataAula}}</span>
         </div>
 
         <div class="class-item-info">
           <i class="fa-solid fa-clock"></i>
-          <span>{{aula.duration}}</span>
+          <span>{{aula.duracaoAula}}</span>
         </div>
       </div>
 
