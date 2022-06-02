@@ -288,6 +288,12 @@ main#content aside#left-menu div#user-infos a {
   text-decoration: none;
 }
 
+main#content aside#left-menu div#user-infos a.highlight {
+  font-weight: bold;
+  color: #5D9BF2;
+  border-bottom: 1px solid #5D9BF2;
+}
+
 main#content aside#left-menu nav#main-menu {
   height: 35%;
 }

@@ -30,10 +30,6 @@ export class MarcacoesComponent implements OnInit {
   }
 
   cadAppointment() {
-    if ( this.appointmentTime == '' || this.appointmentTitle == '' || this.appointmentDescription == '' || this.classId ) {
-      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Missing needed data.' });
-    }
-
     this.ctrl.postAppointment({
       classId: this.classId,
       time: this.appointmentTime,

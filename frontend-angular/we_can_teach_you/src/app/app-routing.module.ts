@@ -4,6 +4,7 @@ import { AulaComponent } from './view/aula/aula.component';
 
 import { FaqComponent } from './view/faq/faq.component';
 import { HomeComponent } from './view/home/home.component';
+import { MinhaContaComponent } from './view/minha-conta/minha-conta.component';
 import { MinhasAulasComponent } from './view/minhas-aulas/minhas-aulas.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'minhas-aulas', component: MinhasAulasComponent },
   { path: 'aula/:classId/:subsection', component: AulaComponent },
   { path: 'professor/:professorId/aula/:classId/:subsection', component: AulaComponent },
+  { path: 'minha-conta', component: MinhaContaComponent }
 ];
 
 @NgModule({

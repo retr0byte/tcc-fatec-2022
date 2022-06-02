@@ -21,6 +21,7 @@ import { AtividadesComponent } from './view/atividades/atividades.component';
 import { AulaComponent } from './view/aula/aula.component';
 import { AlertModalComponent } from './view/alert-modal/alert-modal.component';
 import { MateriaisAulasComponent } from './view/materiais-aulas/materiais-aulas.component';
+import { MinhaContaComponent } from './view/minha-conta/minha-conta.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MateriaisAulasComponent } from './view/materiais-aulas/materiais-aulas.
     AtividadesComponent,
     AulaComponent,
     AlertModalComponent,
-    MateriaisAulasComponent
+    MateriaisAulasComponent,
+    MinhaContaComponent
   ],
   imports: [
     BrowserModule,

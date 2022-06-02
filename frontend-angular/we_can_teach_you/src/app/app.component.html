@@ -120,17 +120,20 @@
 
     <!-- TODO: Fazer a lógica para utilizar a classe .highlight-item -->
     <div class="w50">
-      <a [routerLink]="['/']"><i id="toggle-home" class="fa-solid fa-house"></i></a>
+      <a [routerLink]="['/']"><i id="toggle-home" class="fa-solid fa-house {{this.highlight( [ '/' ], 'highlight-item' )}}"></i></a>
 
-      <a><i id="toggle-external-chat" class="fa-solid fa-comment"></i></a>
+      <a><i id="toggle-external-chat" class="fa-solid fa-comment {{this.highlight( [ '/chat-externo' ], 'highlight-item' )}}"></i></a>
 
-      <a><i id="toggle-achievements" class="fa-solid fa-trophy"></i></a>
+      <a><i id="toggle-achievements" class="fa-solid fa-trophy {{this.highlight( [ '/conquistas' ], 'highlight-item' )}}"></i></a>
 
       <div id="settings-menu-container">
         <div id="toggle-settings-menu">
-          <img
+          <!-- <img
             src="/assets/images/user-mini-avatar.png"
             alt="avatar do usuário"
+          /> -->
+          <img
+            style="background-color: #cccccc"
           />
           <i class="fa-solid fa-chevron-down"></i>
         </div>
@@ -145,27 +148,31 @@
   <main id="content" class="w100">
     <aside id="left-menu">
       <div id="user-infos">
-        <img
+        <!-- <img
           src="/assets/images/user-avatar.png"
           alt="avatar do usuário"
           id="user-avatar"
+        /> -->
+        <img
+          id="user-avatar"
+          style="background-color: #cccccc;"
         />
         <h2>{{ auth.userLogged.username }}</h2>
-        <a href="#">Minha conta</a>
+        <a [routerLink]="['/minha-conta']" class="{{ this.highlight( [ '/minha-conta' ], 'highlight' ) }}">Minha conta</a>
       </div>
 
       <!-- TODO: Fazer a lógica para utilizar a classe .highlight-menu -->
       <nav id="main-menu" class="w100">
         <ul class="w100">
-          <li class="">
+          <li class="{{ this.highlight( [ '/minhas-aulas', '/aula' ], 'highlight-menu' ) }}">
             <a [routerLink]="['/minhas-aulas']"
               ><i class="fa-solid fa-chalkboard-user"></i> Minhas aulas</a
             >
           </li>
-          <li>
+          <li class="{{ this.highlight( [ '/calendario' ], 'highlight-menu' ) }}">
             <a><i class="fa-regular fa-calendar"></i> Calendário</a>
           </li>
-          <li>
+          <li class="{{ this.highlight( [ '/faq' ], 'highlight-menu' ) }}">
             <a [routerLink]="['/faq']"
               ><i class="fa-regular fa-comments"></i> Perguntas Frequentes</a
             >
