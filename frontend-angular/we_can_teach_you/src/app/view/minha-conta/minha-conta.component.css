@@ -1,4 +1,4 @@
-
+/*session 1*/
 .df{
     display: flex;
 }
@@ -11,25 +11,21 @@
     justify-content: space-between;
 }
 
-#info_base{
+.base{
     background-color: white;
     padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 25px;
 }
 
-#info_base  h2{
-    color: #5E9BF3;
-    font-weight: 700;
-    font-size: 2em;
-    text-decoration-line: underline;
-}
-
-#info_base label{
+.base label{
     color: #5E9BF3;
     font-size: 1em;
     margin-top: 24px;
 }
 
-#info_base input, select{
+.base input, select{
     background-color: #E5EAF4;
     border-radius: 10px;
     border: none;
@@ -56,6 +52,7 @@
 
 h1 {
     color: #5E9BF3;
+    margin-bottom: 20px;
 }
 
 h2 {
@@ -64,6 +61,8 @@ h2 {
     font-weight: 700;
     text-decoration: underline;
 }
+
+/*session 2*/
 
 .tudo {
     width: 100%;
@@ -165,3 +164,5 @@ h2 {
 .btns button:nth-child(2) {
     background-color: #5E9BF3;
 }
+
+/*session 3*/
