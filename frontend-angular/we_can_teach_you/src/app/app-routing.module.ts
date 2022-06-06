@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MinhaContaComponent } from './minha-conta/minha-conta.component';
+import { MinhaContaComponent } from './view/minha-conta/minha-conta.component';
 import { AulaComponent } from './view/aula/aula.component';
 
 import { FaqComponent } from './view/faq/faq.component';
