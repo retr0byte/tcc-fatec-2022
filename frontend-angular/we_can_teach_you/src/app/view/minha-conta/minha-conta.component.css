@@ -1,7 +1,55 @@
+
 .df{
     display: flex;
 }
 
 .dc{
     flex-direction: column;
+}
+
+.jcsb{
+    justify-content: space-between;
+}
+
+#info_base{
+    background-color: white;
+    padding: 10px;
+}
+
+#info_base  h2{
+    color: #5E9BF3;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration-line: underline;
+}
+
+#info_base label{
+    color: #5E9BF3;
+    font-size: 1em;
+    margin-top: 24px;
+}
+
+#info_base input, select{
+    background-color: #E5EAF4;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.w45{
+    width: 45%;
+}
+
+.btn_confirmar{
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #5E9CF3;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+    margin: 30px;
+    width: 160px;
+    align-self: end;
 }
