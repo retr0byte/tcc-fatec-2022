@@ -1,1 +1,42 @@
-<p>minha-conta works!</p>
+<h1>Minha conta:</h1>
+
+<section>
+    <h2>Informações básicas:</h2>
+
+    <div class="df">
+        <div class="df dc">
+            <label for="nome">Nome completo:</label>
+            <input type="text" name="nome" id="nome">
+
+            <label for="cpf">CPF:</label>
+            <input type="number" name="cpf" id="cpf">
+
+            <label for="N-escolaridade">Nível escolaridade:</label>
+            <input type="text" name="N-escolaridade" id="N-escolaridade">
+        </div>
+
+        <div class="df dc">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email">
+
+            <label for="celular">Celular:</label>
+            <input type="tel" name="celular" id="celular">
+
+            <div class="df">
+                <div class="df dc">
+                    <label for="sexo">Sexo:</label>
+                    <select name="sexo" id="sexo">
+                        <option value="0">M</option>
+                        <option value="1">H</option>
+                    </select>
+                </div>
+                
+                <div class="df dc">
+                    <label for="dt-nascimento">Data de nascimento:</label>
+                    <input type="date" name="dt-nascimento" id="dt-nascimento">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button>confirmar</button>
+</section>

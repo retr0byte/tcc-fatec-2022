@@ -1,0 +1,7 @@
+.df{
+    display: flex;
+}
+
+.dc{
+    flex-direction: column;
+}
