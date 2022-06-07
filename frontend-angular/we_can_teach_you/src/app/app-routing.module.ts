@@ -6,6 +6,7 @@ import { AulaComponent } from './view/aula/aula.component';
 import { FaqComponent } from './view/faq/faq.component';
 import { HomeComponent } from './view/home/home.component';
 import { MinhasAulasComponent } from './view/minhas-aulas/minhas-aulas.component';
+import { CategoriasComponent } from './view/categorias/categorias.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'minha-conta', component: MinhaContaComponent },
   { path: 'aula/:classId/:subsection', component: AulaComponent },
   { path: 'professor/:professorId/aula/:classId/:subsection', component: AulaComponent },
+  { path: 'categorias', component: CategoriasComponent },
 ];
 
 @NgModule({
