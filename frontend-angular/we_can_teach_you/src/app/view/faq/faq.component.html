@@ -1,23 +1,81 @@
-<h1>Perguntas frequentes:</h1>
+<div class="topo" *ngIf="!isFuncionario">
+    <h1>Perguntas frequentes:</h1>
+
+    <button (click)="show()"><i class="fa-solid fa-circle-plus"></i> Cadastrar</button>
+</div>
+
+<div class="topo" *ngIf="isFuncionario">
+    <h1>Perguntas frequentes:</h1>
+</div>
+
+<section class="form_faq" *ngIf="isVisible">
+    <label for="pergunta">Nome pergunta:</label>
+    <input type="text" name="pergunta" id="pergunta">
+
+    <label for="respostaPergunta">Resposta pergunta:</label>
+    <input type="text" name="respostaPergunta" id="respostaPergunta">
+
+    <button class="btn_confirmar">confirmar</button>
+</section>
+<hr *ngIf="isVisible">
 
 <section>
-    <div class="pesquisa">
+    <div class="pesquisa" *ngIf="!isVisible">
         <input type="text" name="pesquisa-faq" id="pesquisa-faq" placeholder="Qual sua dúvida?">
     </div>
     <div class="perguntasTodas">
       <div class="faqItem" *ngFor="let f of ctrl.faqs">
-        <div class="pergunta">
+        <div class="pergunta" *ngIf="!isEdit">
             <div>
-                <i class="fa-solid fa-circle-question fa-2x"></i>
+                <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
+                <div class="lixeira" *ngIf="!isFuncionario"><i class="fa-solid fa-trash"></i></div>
                 <span>{{f.tituloPergunta}}</span>
             </div>
 
+       
+        <div class="div-btn-editar" *ngIf="!isFuncionario">
+            <button class="btn_editar" (click)="showEdit()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                    
             <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="resposta">
+
+        <div *ngIf="isFuncionario">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        </div>
+
+        <div class="resposta" *ngIf="!isEdit">
             <p class="p-faq">
               <span>{{f.respostaPergunta}}</span>
             </p>
+        </div>
+
+
+
+
+        <div class="pergunta" *ngIf="isEdit">
+            <div>
+                <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
+                <div class="lixeira" *ngIf="!isFuncionario"><i class="fa-solid fa-trash"></i></div>
+                <input type="text" class="edit_input">
+            </div>
+
+       
+        <div class="div-btn-editar" *ngIf="!isFuncionario">
+            <button class="btn_editar"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                    
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div *ngIf="isFuncionario">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        </div>
+        
+        <div class="resposta" *ngIf="isEdit">
+            <input type="text" class="edit_input">
         </div>
     </div>
     </div>

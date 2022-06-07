@@ -11,4 +11,5 @@ import { ControllerService } from './controller/controller.service';
 export class AppComponent {
   constructor(public auth: AuthService, public ctrl: ControllerService) {}
 
+  //isFuncionario: boolean = ['ALUNO', 'PROFESSOR'].includes(this.auth.userLogged!.profile[0]);
 }

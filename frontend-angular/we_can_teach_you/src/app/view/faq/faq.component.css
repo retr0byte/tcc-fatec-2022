@@ -2,6 +2,78 @@ h1{
     color: #5E9BF3;
 }
 
+.topo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lixeira i {
+    padding: 12px;
+    color: white;
+}
+
+.lixeira {
+    background-color: #FF8F8F;
+    border-radius: 50%;
+}
+
+.topo button{
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #5E9BF3;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+    width: 160px;
+    margin: 10px;
+}
+
+.form_faq{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px auto;
+}
+
+.form_faq label{
+    color: #5E9BF3;
+    font-size: 1.2em;
+    margin-top: 24px;
+}
+
+.form_faq input{
+    background-color: #E5EAF4;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.edit_input{
+    border: none;
+    border-bottom: 1px solid #838488;
+    background-color: transparent;
+    outline: none;
+}
+
+.btn_confirmar{
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #5E9CF3;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+    margin: 30px;
+    width: 160px;
+    align-self: end;
+}
+
 section{
     width: 90%;
     margin: auto;
@@ -72,4 +144,26 @@ section{
 
 .fa-circle-question{
    color: #5E9BF3;
+}
+
+.btn_editar {
+    padding: 10px 20px;
+    margin: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #FFE48F;
+    color: black;
+    border-radius: 10px;
+    border: none;
+    width: 160px;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.div-btn-editar {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: space-between;
 }
