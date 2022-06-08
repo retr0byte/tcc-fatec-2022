@@ -6,16 +6,16 @@
     <div class="df jst">
         <div class="df dc width1">
             <label for="nm_categoria">Nome categoria</label>
-            <input type="text" name="nm_categoria" id="nm_categoria">
+            <input type="text" name="nm_categoria" id="nm_categoria" [(ngModel)]="categoryNome">
         </div>
 
         <div class="df dc width2">
             <label for="ds_categoria">Descrição categoria</label>
-            <input type="text" name="ds_categoria" id="ds_categoria">
+            <input type="text" name="ds_categoria" id="ds_categoria" [(ngModel)]="categoryDescricao">
         </div>
     </div>
     
-    <button class="btn_confirmar">confirmar</button>
+    <button class="btn_confirmar" (click)="this.cadCategory()">confirmar</button>
 
 </section>
 
@@ -31,75 +31,42 @@
 
     
 
-    <div class="catItem">
+    <div class="catItem static" id="cat-item-{{c.id}}" *ngFor="let c of ctrl.category">
 
         <!-- texto -->
-
-        <div class="nome" *ngIf="!editVisivel">
-            <div>
-                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
-                <span [innerHTML]="nome"></span>
+        <div class="inner-wrapper static-wrapper">
+            <div class="nome">
+                <div>
+                    <div class="lixeira"><button class="btn_lixeira" (click)="ctrl.deleteCategory(c.id)"><i class="fa-solid fa-trash"></i></button></div>
+                    <span>{{c.nome}}</span>
+                </div>
+            </div>
+            <div class="descricao">
+                <span>{{c.descricao}}</span>
             </div>
         </div>
-        <div class="descricao" *ngIf="!editVisivel">
-            <span [innerHTML]="nome">Descricao pergunta</span>
-        </div>
-
-        <!-- texto -->
-
-        <!-- inputs -->
-
-        <div class="nome" *ngIf="editVisivel">
-            <div>
-                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
-                <input type="text" name="nm_edit_categoria" id="nm_edit_categoria" value="{{nome}}">
-            </div>
-        </div>
-        <div class="descricao" *ngIf="  editVisivel">
-            <input type="text" name="ds_edit_categoria" id="ds_edit_categoria" value="{{nome}}">
-        </div>
-
-        <!-- inputs -->
-
-        <div class="div-btn-editar">
-            <button class="btn_editar" (click)="editar()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
-        </div>
-    </div>
-
-    <!-- segundo teste -->
-
-    <div class="catItem">
-
-        <!-- texto -->
-
-        <div class="nome" *ngIf="!editVisivel">
-            <div>
-                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
-                <span [innerHTML]="nome"></span>
-            </div>
-        </div>
-        <div class="descricao" *ngIf="!editVisivel">
-            <span [innerHTML]="nome">Descricao pergunta</span>
-        </div>
-
         <!-- texto -->
 
         <!-- inputs -->
-
-        <div class="nome" *ngIf="editVisivel">
-            <div>
-                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
-                <input type="text" name="nm_edit_categoria" id="nm_edit_categoria" value="{{nome}}">
+        <div class="inner-wrapper edit-wrapper">
+            <div class="nome">
+                <div>
+                    <div class="lixeira"><button class="btn_lixeira" (click)="ctrl.deleteCategory(c.id)"><i class="fa-solid fa-trash"></i></button></div>
+                    <input type="text" name="nm_edit_categoria" id="nm_edit_categoria" value="{{c.nome}}" #catName>
+                </div>
             </div>
-        </div>
-        <div class="descricao" *ngIf="  editVisivel">
-            <input type="text" name="ds_edit_categoria" id="ds_edit_categoria" value="{{nome}}">
+            <div class="descricao">
+                <input type="text" name="ds_edit_categoria" id="ds_edit_categoria" value="{{c.descricao}}" #catDesc>
+            </div>
         </div>
 
         <!-- inputs -->
 
         <div class="div-btn-editar">
-            <button class="btn_editar" (click)="editar()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+            <button class="btn_editar btn-edit" (click)="editar(c.id)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+        </div>
+        <div class="div-btn-editar">
+            <button class="btn_editar btn-save" (click)="ctrl.putCategory({id: c.id, nome: catName.value, descricao: catDesc.value})"><i class="fa-solid fa-pen-to-square"></i>Salvar</button>
         </div>
     </div>
 

@@ -135,10 +135,11 @@ hr {
     color: white;
 }
 
-.lixeira {
+.btn_lixeira {
     background-color: #FF8F8F;
     border-radius: 50%;
     margin-right: 30px;
+    border: none;
 }
 
 .btn_editar {
@@ -194,6 +195,16 @@ hr {
 
 #session_pesquisa {
     margin-bottom: 30px;
+}
+
+.inner-wrapper {
+    width: 100%;
+    display: flex;
+}
+
+
+.btn-save, .edit-wrapper {
+    display: none;
 }
 
 
