@@ -1,0 +1,108 @@
+<div class="topo">
+    <h1>Categorias do sistema:</h1>
+    <button (click)="mostrar()"><i class="fa-solid fa-circle-plus"></i>Cadastrar</button>
+</div>
+<section class="base df dc" *ngIf="visivel">
+    <div class="df jst">
+        <div class="df dc width1">
+            <label for="nm_categoria">Nome categoria</label>
+            <input type="text" name="nm_categoria" id="nm_categoria">
+        </div>
+
+        <div class="df dc width2">
+            <label for="ds_categoria">Descrição categoria</label>
+            <input type="text" name="ds_categoria" id="ds_categoria">
+        </div>
+    </div>
+    
+    <button class="btn_confirmar">confirmar</button>
+
+</section>
+
+<hr *ngIf="visivel" />
+
+<section id="session_pesquisa" *ngIf="!visivel">
+    <div class="pesquisa">
+        <input type="text" name="pesquisa-cat" id="pesquisa-cat" placeholder="Buscar Categoria:">
+    </div>
+</section>      
+
+<section id="catTodas">
+
+    
+
+    <div class="catItem">
+
+        <!-- texto -->
+
+        <div class="nome" *ngIf="!editVisivel">
+            <div>
+                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
+                <span [innerHTML]="nome"></span>
+            </div>
+        </div>
+        <div class="descricao" *ngIf="!editVisivel">
+            <span [innerHTML]="nome">Descricao pergunta</span>
+        </div>
+
+        <!-- texto -->
+
+        <!-- inputs -->
+
+        <div class="nome" *ngIf="editVisivel">
+            <div>
+                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
+                <input type="text" name="nm_edit_categoria" id="nm_edit_categoria" value="{{nome}}">
+            </div>
+        </div>
+        <div class="descricao" *ngIf="  editVisivel">
+            <input type="text" name="ds_edit_categoria" id="ds_edit_categoria" value="{{nome}}">
+        </div>
+
+        <!-- inputs -->
+
+        <div class="div-btn-editar">
+            <button class="btn_editar" (click)="editar()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+        </div>
+    </div>
+
+    <!-- segundo teste -->
+
+    <div class="catItem">
+
+        <!-- texto -->
+
+        <div class="nome" *ngIf="!editVisivel">
+            <div>
+                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
+                <span [innerHTML]="nome"></span>
+            </div>
+        </div>
+        <div class="descricao" *ngIf="!editVisivel">
+            <span [innerHTML]="nome">Descricao pergunta</span>
+        </div>
+
+        <!-- texto -->
+
+        <!-- inputs -->
+
+        <div class="nome" *ngIf="editVisivel">
+            <div>
+                <div class="lixeira"><i class="fa-solid fa-trash"></i></div>
+                <input type="text" name="nm_edit_categoria" id="nm_edit_categoria" value="{{nome}}">
+            </div>
+        </div>
+        <div class="descricao" *ngIf="  editVisivel">
+            <input type="text" name="ds_edit_categoria" id="ds_edit_categoria" value="{{nome}}">
+        </div>
+
+        <!-- inputs -->
+
+        <div class="div-btn-editar">
+            <button class="btn_editar" (click)="editar()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+        </div>
+    </div>
+
+</section>
+
+

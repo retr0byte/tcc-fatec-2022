@@ -1,1 +1,113 @@
-<p>minha-conta works!</p>
+<h1>Minha conta:</h1>
+
+<section class="base df dc">
+    <h2>Informações básicas:</h2>
+
+    <div class="df jcsb">
+        <div class="df dc w45">
+            <label for="nome">Nome completo:</label>
+            <input type="text" name="nome" id="nome">
+
+            <label for="cpf">CPF:</label>
+            <input type="number" name="cpf" id="cpf">
+
+            <label for="N-escolaridade">Nível escolaridade:</label>
+            <input type="text" name="N-escolaridade" id="N-escolaridade">
+        </div>
+
+        <div class="df dc w45">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email">
+
+            <label for="celular">Celular:</label>
+            <input type="tel" name="celular" id="celular">
+
+            <div class="df jcsb">
+                <div class="df dc w45">
+                    <label for="sexo">Sexo:</label>
+                    <select name="sexo" id="sexo">
+                        <option value="0">M</option>
+                        <option value="1">H</option>
+                    </select>
+                </div>
+
+                <div class="df dc w45">
+                    <label for="dt-nascimento">Data de nascimento:</label>
+                    <input type="date" name="dt-nascimento" id="dt-nascimento">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn_confirmar">confirmar</button>
+</section>
+
+<section class="tudo">
+
+    <section id="alterar-avatar">
+
+        <h2>Alterar avatar:</h2>
+
+        <div id="avatar-info">
+
+            <div id="avatar" class="dentro">
+                <figure>
+
+                </figure>
+            </div>
+
+            <div id="info" class="dentro">
+                <p>Fique tranquilo(a) para selecionar a foto que desejar, apenas leve em consideração que esta foto ficará disponível para os outros usuários da plataforma, ok?</p>
+                <p>Sugerimos uma foto mais formal :)</p>
+                <div>
+                    <input type="file">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="obs">
+            OBS: Considere que o tamanho máximo de imagem permitida é de: 2MB, sendo aceitos os tipos: .png | .jpg | .jpeg. Portanto, imagens com tamanho superior ao definido ou que sejam de tipos diferentes dos sugeridos não serão consideradas.
+        </div>
+
+    </section>
+
+    <section id="definicao-categorias">
+
+        <h2>Definição / alteração de categorias:</h2>
+
+        <div class="campo">
+            <label for="categoria">Buscar categoria</label>
+            <input type="text">
+        </div>
+
+        <div class="cat"></div>
+        <div class="btns">
+            <button>remover</button>
+            <button>confirmar</button>
+        </div>
+
+      </section>
+
+</section>
+
+<section class="base df dc">
+    <h2>Mudança de senha:</h2>
+
+    <div class="df jcsb">
+        <div class="df dc w45">
+            <label for="nova_senha">Nova senha:</label>
+            <input type="password" name="nova_senha" id="nova_senha">
+
+            <label for="senha_atual">Senha atual:</label>
+            <input type="password" name="senha_atual" id="senha_atual">
+        </div>
+
+        <div class="df dc w45">
+            <label for="conf_nova_senha">Confirmação da nova senha:</label>
+            <input type="password" name="conf_nova_senha" id="conf_nova_senha">
+        </div>
+    </div>
+
+    <button class="btn_confirmar">confirmar</button>
+</section>

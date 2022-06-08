@@ -6,6 +6,8 @@ import { AlertsService } from './alerts.service';
 
 import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
+import { Aula, AulaResponse } from '../model/Aula';
+import { Faq } from 'src/app/model/Faq';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,8 @@ export class ControllerService {
   topMenuSearchOpt = false;
   professorsByCategory: Professor[] | null = null;
   appointmentsByClass: MarcacoesResponse[][] | null = null;
+  AulaById: AulaResponse[][] | null = null;
+  faqs: Faq[] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
 
@@ -47,7 +51,7 @@ export class ControllerService {
         let tempArr: any = [];
         let cont = 0;
         for (const appointment of data) {
-          if(cont < 2) {
+          if(cont < 3) {
             tempArr.push(appointment);
             cont++;
           }else{
@@ -110,8 +114,69 @@ export class ControllerService {
       }
     );
   }
+    
+  //CRUD FAQ
+  getFaqs() {
+
+    this.http.get<Faq[]>(
+      this.auth.api + '/faq', {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+        (data) => {
+          this.faqs = data;
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
+
+    return false;
+  }
+
+  // CRUD AULA
+  getAula(classId: string | null) {
+
+    if (classId == '') {
+      this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
+    }
+   
+    this.http.get<AulaResponse[]>(
+      this.auth.api + '/aulas' + '/aluno/' + this.auth.userLogged!.userId, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+      (data) => {
+        let newArr = [];
+        let tempArr: any = [];
+        let cont = 0;
+        for (const aula of data) {
+          if(cont < 3) {
+            tempArr.push(aula);
+            cont++;
+          }else{
+            newArr.push(tempArr);
+            tempArr = [];
+            cont=1;
+            tempArr.push(aula);
+          }
+        }
+
+        if(tempArr.length > 0) {
+          newArr.push(tempArr)
+          tempArr = [];
+        }
+  
+
+        this.AulaById = newArr;
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
 
 
+  }
 
 
 }

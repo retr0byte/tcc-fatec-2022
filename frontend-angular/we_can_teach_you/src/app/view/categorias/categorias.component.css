@@ -1,63 +1,45 @@
-h1{
+h1 {
     color: #5E9BF3;
 }
 
-.topo{
+.topo {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
-.lixeira i {
-    padding: 12px;
-    color: white;
-}
-
-.lixeira {
-    background-color: #FF8F8F;
-    border-radius: 50%;
-}
-
-.topo button{
+.topo button {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    background-color: #5E9BF3;
+    background-color: #5E9CF3;
     color: #FFFFFF;
     border-radius: 10px;
     border: none;
     width: 160px;
-    margin: 10px;
+    align-self: end;
 }
 
-.form_faq{
-    display: flex;
-    flex-direction: column;
+.base{
     background-color: white;
     padding: 10px;
     border-radius: 10px;
+    margin: 10px;
     padding: 25px;
-    margin: 20px auto;
 }
 
-.form_faq label{
+.base label{
     color: #5E9BF3;
-    font-size: 1.2em;
+    font-size: 1em;
     margin-top: 24px;
 }
 
-.form_faq input{
+.base input, select{
     background-color: #E5EAF4;
     border-radius: 10px;
     border: none;
     padding: 10px;
-}
-
-.edit_input{
-    border: none;
-    border-bottom: 1px solid #838488;
-    background-color: transparent;
-    outline: none;
 }
 
 .btn_confirmar{
@@ -69,86 +51,98 @@ h1{
     color: #FFFFFF;
     border-radius: 10px;
     border: none;
-    margin: 30px;
+    margin-top: 30px;
     width: 160px;
     align-self: end;
 }
 
-section{
-    width: 90%;
-    margin: auto;
+.topo button i {
+    margin-right: 5px;
 }
 
-.pesquisa{
-    margin: 20px auto;
+.df{
     display: flex;
-    width: 100%;
-    justify-content: center;
-
 }
 
-.pesquisa input{
-    background: #E5EAF5;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    width: 80%;
-    font-size: 25px;
+.dc{
+    flex-direction: column;
 }
 
-.perguntasTodas{
+.jst{
+    justify-content: space-evenly;
+}
+
+.width2{
+    width: 65%;
+}
+
+.width1{
+    width: 25%;
+}
+
+hr {
+    margin-top: 30px;
+    background-color: #5E9BF3;
+}
+
+.catTodas{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.faqItem{
+.catItem{
     display: flex;
-    flex-direction: column;
-    margin-top:20px ;
-    width: 95%;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
-.pergunta{
+.nome{
     width: 80%;
     background-color: white;
     display: flex;
     justify-content: space-between;
-    border-radius: 10px;
     padding: 10px;
     margin: auto;
 
 
 }
 
-.pergunta > div{
+.nome > div{
     display: flex;
     align-items: center;
 }
 
-.pergunta > div > span{
+.nome > div > span{
     margin-left:10px;
 }
 
-.resposta{
+.descricao{
     width: 78%;
     background-color: white;
-    margin: auto;
-
+    display: flex;
+    align-items: center;
 }
 
-.p-faq {
-    margin: 10px;
+.lixeira i {
+    padding: 12px;
+    color: white;
 }
 
-.fa-circle-question{
-   color: #5E9BF3;
+.lixeira {
+    background-color: #FF8F8F;
+    border-radius: 50%;
+    margin-right: 30px;
 }
 
 .btn_editar {
     padding: 10px 20px;
-    margin: 15px;
     font-size: 1.2rem;
     cursor: pointer;
     background-color: #FFE48F;
@@ -164,6 +158,42 @@ section{
 .div-btn-editar {
     display: flex;
     align-items: center;
-    width: 25%;
-    justify-content: space-between;
 }
+
+.catItem input {
+    border: none;
+    border-bottom: 1px solid #838488;
+    background-color: transparent;
+    outline: none;
+}
+
+.catItem input:nth-child(1) {
+    width: 90%;
+}
+
+.catItem input:nth-child(2) {
+    width: 80%;
+}
+
+.pesquisa{
+    margin: 20px auto;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.pesquisa input{
+    background: #E5EAF5;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 90%;
+    font-size: 25px;
+}
+
+#session_pesquisa {
+    margin-bottom: 30px;
+}
+
+
