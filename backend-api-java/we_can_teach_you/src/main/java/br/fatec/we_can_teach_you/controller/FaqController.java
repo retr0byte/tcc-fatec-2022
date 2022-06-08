@@ -66,7 +66,7 @@ public class FaqController implements ControllerInterface<FaqDTO>{
 
     @Override
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (service.delete(id)) {
             return ResponseEntity.ok().build();

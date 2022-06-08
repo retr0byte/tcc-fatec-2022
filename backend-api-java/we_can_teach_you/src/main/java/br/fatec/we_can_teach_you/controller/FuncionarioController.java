@@ -53,7 +53,6 @@ public class FuncionarioController implements ControllerInterface<FuncionarioDTO
 
     @Override
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<FuncionarioDTO> post(@RequestBody FuncionarioDTO obj) throws URISyntaxException {
         FuncionarioDTO dto = service.create(obj);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
