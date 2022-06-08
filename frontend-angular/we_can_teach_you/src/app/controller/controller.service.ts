@@ -8,6 +8,7 @@ import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
 import { Aula, AulaResponse } from '../model/Aula';
 import { Faq, FaqRequest, FaqResponse } from 'src/app/model/Faq';
+import { Category, CategoryResponse } from '../model/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class ControllerService {
   appointmentsByClass: MarcacoesResponse[][] | null = null;
   AulaById: AulaResponse[][] | null = null;
   faqs: FaqResponse[] | null = null;
+  category: CategoryResponse[] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
 
@@ -214,5 +216,77 @@ export class ControllerService {
 
   }
 
+  //CRUD Category
+  getCategories() {
+
+    this.http.get<CategoryResponse[]>(
+      this.auth.api + '/categorias', {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+        (data) => {
+          this.category = data;
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
+
+    return false;
+  }
+
+  postCategory(categoryInfo: Category) {
+
+    const requestPkg: Category = {
+      nome: categoryInfo.nome,
+      descricao: categoryInfo.descricao
+    };
+
+    this.http.post<CategoryResponse>(
+      this.auth.api + '/categorias', requestPkg, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
+      }
+    ).subscribe(
+      (data) => {
+        this.getCategories();
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
+  }
+
+  putCategory(categoryInfo: Category) {
+    if(!categoryInfo.id) {
+      this.alerts.showAlertWarning({ title: "Atenção", message: "Não foi possível atualizar a categoria." });
+    }
+    this.http.put<CategoryResponse>(
+      this.auth.api + '/categorias/' , categoryInfo, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
+      }
+    ).subscribe(
+      (data) => {
+        this.getCategories();
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
+  }
+
+  deleteCategory( categoryId: number) {
+    this.http.delete(
+      this.auth.api + '/categorias/' + categoryId, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+      (data) => {
+        this.getCategories();
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
+  }
 
 }
