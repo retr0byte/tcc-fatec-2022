@@ -10,12 +10,12 @@
 
 <section class="form_faq" *ngIf="isVisible">
     <label for="pergunta">Nome pergunta:</label>
-    <input type="text" name="pergunta" id="pergunta">
+    <input type="text" name="pergunta" id="pergunta" [(ngModel)]="pergunta">
 
     <label for="respostaPergunta">Resposta pergunta:</label>
-    <input type="text" name="respostaPergunta" id="respostaPergunta">
+    <input type="text" name="respostaPergunta" id="respostaPergunta" [(ngModel)]="resposta">
 
-    <button class="btn_confirmar">confirmar</button>
+    <button class="btn_confirmar" (click)="this.cadastroFaq()">confirmar</button>
 </section>
 <hr *ngIf="isVisible">
 
@@ -25,16 +25,16 @@
     </div>
     <div class="perguntasTodas">
       <div class="faqItem" *ngFor="let f of ctrl.faqs">
-        <div class="pergunta" *ngIf="!isEdit">
+        <div class="pergunta" #itemref id='{{f.id}}' *ngIf="!isEdit">
             <div>
                 <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
-                <div class="lixeira" *ngIf="!isFuncionario"><i class="fa-solid fa-trash"></i></div>
+                <div class="lixeira"><button class="btn_lixeira" (click)="ctrl.deleteFaq(f.id)"><i class="fa-solid fa-trash"></i></button></div>
                 <span>{{f.tituloPergunta}}</span>
             </div>
 
        
         <div class="div-btn-editar" *ngIf="!isFuncionario">
-            <button class="btn_editar" (click)="showEdit()"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+            <button class="btn_editar" (click)="showEdit(itemref.id)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
                     
             <i class="fas fa-chevron-down"></i>
         </div>
@@ -52,13 +52,13 @@
         </div>
 
 
-
-
+        <div>
         <div class="pergunta" *ngIf="isEdit">
             <div>
                 <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
                 <div class="lixeira" *ngIf="!isFuncionario"><i class="fa-solid fa-trash"></i></div>
-                <input type="text" class="edit_input">
+                <label for="perguntaTitulo">Pergunta: </label>
+                <input type="text" class="edit_input" id="perguntaTitulo" name="perguntaTitulo">
             </div>
 
        
@@ -75,8 +75,11 @@
         </div>
         
         <div class="resposta" *ngIf="isEdit">
-            <input type="text" class="edit_input">
+            <label for="resposta">Resposta: </label>
+            <input type="text" class="edit_input" id="resposta" name="resposta">
+        </div>
+
         </div>
     </div>
-    </div>
+</div>
 </section>

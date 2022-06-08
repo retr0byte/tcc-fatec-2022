@@ -7,7 +7,7 @@ import { AlertsService } from './alerts.service';
 import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
 import { Aula, AulaResponse } from '../model/Aula';
-import { Faq } from 'src/app/model/Faq';
+import { Faq, FaqRequest, FaqResponse } from 'src/app/model/Faq';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class ControllerService {
   professorsByCategory: Professor[] | null = null;
   appointmentsByClass: MarcacoesResponse[][] | null = null;
   AulaById: AulaResponse[][] | null = null;
-  faqs: Faq[] | null = null;
+  faqs: FaqResponse[] | null = null;
 
   constructor(public auth: AuthService, private http: HttpClient, public alerts: AlertsService) { }
 
@@ -118,7 +118,7 @@ export class ControllerService {
   //CRUD FAQ
   getFaqs() {
 
-    this.http.get<Faq[]>(
+    this.http.get<FaqResponse[]>(
       this.auth.api + '/faq', {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
       }
@@ -134,6 +134,42 @@ export class ControllerService {
     return false;
   }
 
+  postFaq(faqInfo: Faq){
+
+      const requestPkg: FaqRequest = {
+        tituloPergunta: faqInfo.tituloPergunta,
+        respostaPergunta: faqInfo.respostaPergunta,
+        funcionario: { id: parseInt(this.auth.userLogged!.userId) },
+      };
+
+      this.http.post<FaqResponse>(
+        this.auth.api + '/faq', requestPkg, {
+          headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
+        }
+      ).subscribe(
+        (data) => {
+          this.getFaqs();
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
+  }
+
+  deleteFaq( faqId: number) {
+    this.http.delete(
+      this.auth.api + '/faq/' + faqId, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+      (data) => {
+        this.getFaqs();
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
+  }
   // CRUD AULA
   getAula(classId: string | null) {
 

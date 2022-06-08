@@ -3,7 +3,7 @@ import { AlertsService } from 'src/app/controller/alerts.service';
 import { AuthService } from 'src/app/controller/auth.service';
 import { ControllerService } from 'src/app/controller/controller.service';
 
-import { Faq } from 'src/app/model/Faq';
+import { Faq, FaqRequest } from 'src/app/model/Faq';
 
 
 @Component({
@@ -13,7 +13,8 @@ import { Faq } from 'src/app/model/Faq';
 })
 export class FaqComponent implements OnInit {
   faqs: Faq | null = null;
-  
+  pergunta: string = '';
+  resposta: string = '';
 
 
   constructor(public ctrl: ControllerService, public alerts: AlertsService, public auth: AuthService) { }
@@ -34,7 +35,18 @@ export class FaqComponent implements OnInit {
     this.isVisible = !this.isVisible;
   }
 
-  showEdit(): void{
-    this.isEdit = !this.isEdit;
+  showEdit(t: string): void{
+    console.log(t);
+    // if(pega != null){
+    //   pega.isEdit = false;
+    // }
+    
+  }
+
+  cadastroFaq(): void{
+    this.ctrl.postFaq({  tituloPergunta: this.pergunta, respostaPergunta: this.resposta});
+    this.pergunta = '';
+    this.resposta = '';
+    this.isVisible = false;
   }
 }

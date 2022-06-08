@@ -1,5 +1,5 @@
 export interface Faq {
-    classId: string | null,
+
     tituloPergunta: string,
     respostaPergunta: string;
   }

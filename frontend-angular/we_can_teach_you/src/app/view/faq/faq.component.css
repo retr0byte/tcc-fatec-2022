@@ -2,6 +2,10 @@ h1{
     color: #5E9BF3;
 }
 
+.df{
+    display: flex;
+}
+
 .topo{
     display: flex;
     justify-content: space-between;
@@ -12,9 +16,11 @@ h1{
     color: white;
 }
 
-.lixeira {
+.btn_lixeira {
     background-color: #FF8F8F;
     border-radius: 50%;
+    margin-right: 30px;
+    border: none;
 }
 
 .topo button{
