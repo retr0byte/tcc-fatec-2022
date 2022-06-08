@@ -54,7 +54,12 @@ public class AlunoService implements ServiceInterface<AlunoDTO> {
     }
 
     @Override
-    public boolean update(AlunoDTO obj) {
+    public boolean update(AlunoDTO obj) throws AuthorizationException {
+        obj.setSenha(passwordEncoder.encode(obj.getSenha()));
+        if (!jwtUtil.authorized( obj.getId() )) {
+			throw new AuthorizationException("Acesso negado!");
+		}
+
         if (repository.existsById(obj.getId())) {
             repository.save(mapper.toEntity(obj));
             return true;

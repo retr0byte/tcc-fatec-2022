@@ -38,7 +38,6 @@ public class AlunoController implements ControllerInterface<AlunoDTO> {
 
     @Override
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
         try {
             AlunoDTO obj = service.findById(id);
@@ -61,12 +60,15 @@ public class AlunoController implements ControllerInterface<AlunoDTO> {
 
     @Override
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> put(@RequestBody AlunoDTO obj) {
-        if (service.update(obj)) {
-            return ResponseEntity.ok(obj);
+        try {
+            if (service.update(obj)) {
+                return ResponseEntity.ok(obj);
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        } catch (AuthorizationException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @Override

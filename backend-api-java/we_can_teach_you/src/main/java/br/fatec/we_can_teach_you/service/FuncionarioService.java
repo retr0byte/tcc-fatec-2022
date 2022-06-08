@@ -55,6 +55,7 @@ public class FuncionarioService implements ServiceInterface<FuncionarioDTO> {
 
     @Override
     public boolean update(FuncionarioDTO obj) {
+        obj.setSenha(passwordEncoder.encode(obj.getSenha()));
         if (repository.existsById(obj.getId())) {
             repository.save(mapper.toEntity(obj));
             return true;

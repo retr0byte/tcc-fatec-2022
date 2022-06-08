@@ -59,6 +59,7 @@ public class ProfessorService implements ServiceInterface<ProfessorDTO> {
 
     @Override
     public boolean update(ProfessorDTO obj) {
+        obj.setSenha(passwordEncoder.encode(obj.getSenha()));
         if (repository.existsById(obj.getId())) {
             repository.save(mapper.toEntity(obj));
             return true;
