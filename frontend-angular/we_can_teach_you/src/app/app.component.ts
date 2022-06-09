@@ -29,5 +29,6 @@ export class AppComponent {
     return '';
   }
 
-  //isFuncionario: boolean = ['ALUNO', 'PROFESSOR'].includes(this.auth.userLogged!.profile[0]);
+  ngOnInit(): void {
+  }
 }

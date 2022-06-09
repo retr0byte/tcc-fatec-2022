@@ -1,10 +1,10 @@
-<div class="topo" *ngIf="!isFuncionario">
+<div class="topo" *ngIf="ctrl.auth.isFuncionario">
     <h1>Perguntas frequentes:</h1>
 
     <button (click)="show()"><i class="fa-solid fa-circle-plus"></i> Cadastrar</button>
 </div>
 
-<div class="topo" *ngIf="isFuncionario">
+<div class="topo" *ngIf="!ctrl.auth.isFuncionario">
     <h1>Perguntas frequentes:</h1>
 </div>
 
@@ -28,17 +28,18 @@
             <div class="inner-wrapper static-wrapper">
                 <div class="pergunta">
                     <div>
-                        <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
-                        <div class="lixeira"><button class="btn_lixeira" (click)="ctrl.deleteFaq(f.id)"><i
+                        <div *ngIf="!ctrl.auth.isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
+
+                        <div *ngIf="ctrl.auth.isFuncionario" class="lixeira"><button class="btn_lixeira" (click)="ctrl.deleteFaq(f.id)"><i
                                     class="fa-solid fa-trash"></i></button></div>
                         <span>{{f.tituloPergunta}}</span>
                     </div>
-                    <div class="div-btn-editar" *ngIf="!isFuncionario">
+                    <div class="div-btn-editar" *ngIf="ctrl.auth.isFuncionario">
                         <button class="btn_editar btn-edit" (click)="showEdit(f.id)"><i
                                 class="fa-solid fa-pen-to-square"></i>Editar</button>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div *ngIf="isFuncionario">
+                    <div *ngIf="!ctrl.auth.isFuncionario">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
@@ -53,20 +54,20 @@
             <div class="inner-wrapper edit-wrapper">
                 <div class="pergunta">
                     <div>
-                        <div *ngIf="isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
-                        <div class="lixeira" *ngIf="!isFuncionario"><i class="fa-solid fa-trash"></i></div>
+                        <div *ngIf="!ctrl.auth.isFuncionario"><i class="fa-solid fa-circle-question fa-2x"></i></div>
+                        <div class="lixeira" *ngIf="ctrl.auth.isFuncionario"><i class="fa-solid fa-trash"></i></div>
                         <label for="perguntaTitulo">Pergunta: </label>
                         <input type="text" class="edit_input" id="perguntaTitulo" name="perguntaTitulo" #questionTitle value="{{f.tituloPergunta}}">
                     </div>
 
 
-                    <div class="div-btn-editar" *ngIf="!isFuncionario">
+                    <div class="div-btn-editar" *ngIf="ctrl.auth.isFuncionario">
                         <button class="btn_editar btn-save" (click)="this.ctrl.putFaq({id: f.id, tituloPergunta: questionTitle.value, respostaPergunta: questionAnswer.value})"><i class="fa-solid fa-pen-to-square"></i>Salvar</button>
 
                         <i class="fas fa-chevron-down"></i>
                     </div>
 
-                    <div *ngIf="isFuncionario">
+                    <div *ngIf="!ctrl.auth.isFuncionario">
                         <i class="fas fa-chevron-down"></i>
                     </div>
 

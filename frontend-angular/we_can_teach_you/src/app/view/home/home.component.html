@@ -1,40 +1,40 @@
-<div class="home-container" *ngIf="!ctrl.professorsByCategory">
-  <h1>O que deseja aprender hoje?</h1>
-  <form
-    class="search-for-content"
-    (submit)="ctrl.getProfessorsByCategory(searchContent.value)"
-  >
-    <div class="search-wrapper">
-      <div>
-        <i class="fa-solid fa-magnifying-glass"></i>
+<div class="main-wrapper" *ngIf="!ctrl.auth.isFuncionario">
+  <div class="home-container" *ngIf="!ctrl.professorsByCategory">
+    <h1>O que deseja aprender hoje?</h1>
+    <form
+      class="search-for-content"
+      (submit)="ctrl.getProfessorsByCategory(searchContent.value)"
+    >
+      <div class="search-wrapper">
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <input
+          type="text"
+          id="search-content"
+          #searchContent
+          placeholder="Tente algo como: Matemática ou então Biologia..."
+        />
       </div>
-      <input
-        type="text"
-        id="search-content"
-        #searchContent
-        placeholder="Tente algo como: Matemática ou então Biologia..."
-      />
-    </div>
-    <div class="search-btn-wrapper">
-      <div class="search-btn default-btn">
-        <input type="submit" value="Começar a aprender" />
-        <i class="fa-solid fa-rocket"></i>
+      <div class="search-btn-wrapper">
+        <div class="search-btn default-btn">
+          <input type="submit" value="Começar a aprender" />
+          <i class="fa-solid fa-rocket"></i>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 
-<div class="professors-list-container" *ngIf="ctrl.professorsByCategory">
-  <h1 class="main-title">Exibindo professores de: <span>Matemática</span></h1>
+  <div class="professors-list-container" *ngIf="ctrl.professorsByCategory">
+    <h1 class="main-title">Exibindo professores de: <span>Matemática</span></h1>
 
-  <div class="professors-list-wrapper">
-
-    <owl-carousel-o [options]="customOptions">
-      <ng-template
-        carouselSlide
-        *ngFor="let professor of ctrl.professorsByCategory"
-      >
-        <div class="professor-item-wrapper">
+    <div class="professors-list-wrapper">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template
+          carouselSlide
+          *ngFor="let professor of ctrl.professorsByCategory"
+        >
+          <div class="professor-item-wrapper">
             <figure
               class="class-item-img"
               style="background-image: url('/assets/images/professor.jpg')"
@@ -98,9 +98,11 @@
                 <i class="fa-solid fa-circle-dollar-to-slot"></i>
               </a>
             </div>
-        </div>
-      </ng-template>
-    </owl-carousel-o>
-
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
   </div>
 </div>
+
+<div class="main-wrapper" *ngIf="ctrl.auth.isFuncionario"></div>

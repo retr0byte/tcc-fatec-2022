@@ -19,8 +19,18 @@ export class AuthService {
   userLogged: Auth | null = null;
   profiles: UserProfiles[] = [ UserProfiles.ALUNO, UserProfiles.PROFESSOR, UserProfiles.FUNCIONARIO ];
   newUser = false;
+  isFuncionario: boolean = true;
 
   constructor(private http: HttpClient, public alerts: AlertsService) {}
+
+  getUserProfile(): string {
+    return this.userLogged ? this.userLogged!.profile[0] : '';
+  }
+
+  checkIfItsAEmployee(): boolean  {
+    const userProfile = this.getUserProfile()
+    return userProfile ? ['ADMIN', 'FUNCIONARIO'].includes( userProfile ) : false;
+  }
 
   toggleOptions(){
     this.newUser = !this.newUser;
@@ -50,6 +60,9 @@ export class AuthService {
 
         setTimeout(() => {
           this.userLogged = data;
+          this.isFuncionario = this.checkIfItsAEmployee();
+          console.log(this.userLogged);
+          console.log(this.isFuncionario);
         }, 1500)
       },
       (error) => {

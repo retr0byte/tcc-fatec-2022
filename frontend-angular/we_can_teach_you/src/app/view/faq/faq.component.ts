@@ -15,15 +15,9 @@ export class FaqComponent implements OnInit {
   pergunta: string = '';
   resposta: string = '';
 
-
-  constructor(public ctrl: ControllerService, public alerts: AlertsService, public auth: AuthService) { }
-
-  isFuncionario: boolean = ['ALUNO', 'PROFESSOR'].includes(this.auth.userLogged!.profile[0]);
+  constructor(public ctrl: ControllerService, public alerts: AlertsService) { }
 
   isVisible: boolean = false;
-
-
-  
 
   ngOnInit(): void {
     this.ctrl.getFaqs()
@@ -56,7 +50,7 @@ export class FaqComponent implements OnInit {
       el.classList.add("static");
 
     }
-    
+
   }
 
   cadastroFaq(): void{

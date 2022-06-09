@@ -161,15 +161,24 @@
         <a [routerLink]="['/minha-conta']" class="{{ this.highlight( [ '/minha-conta' ], 'highlight' ) }}">Minha conta</a>
       </div>
 
-      <!-- TODO: Fazer a lógica para utilizar a classe .highlight-menu -->
       <nav id="main-menu" class="w100">
         <ul class="w100">
-          <li class="{{ this.highlight( [ '/minhas-aulas', '/aula' ], 'highlight-menu' ) }}">
+          <li class="{{ this.highlight( [ '/tickets' ], 'highlight-menu' ) }}" *ngIf="auth.isFuncionario">
+            <a
+              ><i class="fa-solid fa-chalkboard-user"></i> Tickets</a
+            >
+          </li>
+          <li class="{{ this.highlight( [ '/categorias' ], 'highlight-menu' ) }}" *ngIf="auth.isFuncionario">
+            <a [routerLink]="['/categorias']"
+              ><i class="fa-solid fa-chalkboard-user"></i> Categorias</a
+            >
+          </li>
+          <li class="{{ this.highlight( [ '/minhas-aulas', '/aula' ], 'highlight-menu' ) }}" *ngIf="!auth.isFuncionario">
             <a [routerLink]="['/minhas-aulas']"
               ><i class="fa-solid fa-chalkboard-user"></i> Minhas aulas</a
             >
           </li>
-          <li class="{{ this.highlight( [ '/calendario' ], 'highlight-menu' ) }}">
+          <li class="{{ this.highlight( [ '/calendario' ], 'highlight-menu' ) }}" *ngIf="!auth.isFuncionario">
             <a><i class="fa-regular fa-calendar"></i> Calendário</a>
           </li>
           <li class="{{ this.highlight( [ '/faq' ], 'highlight-menu' ) }}">
