@@ -61,8 +61,6 @@ export class AuthService {
         setTimeout(() => {
           this.userLogged = data;
           this.isFuncionario = this.checkIfItsAEmployee();
-          console.log(this.userLogged);
-          console.log(this.isFuncionario);
         }, 1500)
       },
       (error) => {

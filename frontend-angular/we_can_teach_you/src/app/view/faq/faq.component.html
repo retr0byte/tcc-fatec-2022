@@ -21,7 +21,12 @@
 
 <section>
     <div class="pesquisa" *ngIf="!isVisible">
-        <input type="text" name="pesquisa-faq" id="pesquisa-faq" placeholder="Qual sua dúvida?">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="fields-wrapper">
+          <input type="text" name="pesquisa-faq" id="pesquisa-faq" placeholder="Qual sua dúvida?" #searchItem (change)="this.searchByTitle(searchItem.value)">
+        </div>
     </div>
     <div class="perguntasTodas">
         <div class="faqItem static" *ngFor="let f of ctrl.faqs" id='faq-item-{{f.id}}'>

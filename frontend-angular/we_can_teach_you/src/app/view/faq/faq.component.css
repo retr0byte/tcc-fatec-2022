@@ -85,22 +85,44 @@ section{
     margin: auto;
 }
 
-.pesquisa{
-    margin: 20px auto;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-
+.pesquisa {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E5EAF5;
+  border-radius: 10px;
 }
 
-.pesquisa input{
-    background: #E5EAF5;
-    border-radius: 10px;
+.pesquisa div.icon-wrapper {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding-right: 40px;
+  width: 10%;
+}
+
+.pesquisa div.icon-wrapper i {
+  color: #838488;
+  font-size: 1.2rem;
+}
+
+.pesquisa div.fields-wrapper {
+  width: 90%;
+}
+
+.pesquisa input[type=submit] { display: none; }
+
+.pesquisa input[type=text]{
+    background-color: transparent;
     border: none;
     padding: 10px;
-    width: 80%;
+    width: 100%;
     font-size: 25px;
+    color: #838488;
 }
+
+.pesquisa input[type=text]:focus { outline: none; }
 
 .perguntasTodas{
     display: flex;

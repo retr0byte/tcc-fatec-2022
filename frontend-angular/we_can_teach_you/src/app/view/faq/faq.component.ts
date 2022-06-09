@@ -59,4 +59,12 @@ export class FaqComponent implements OnInit {
     this.resposta = '';
     this.isVisible = false;
   }
+
+  searchByTitle( searchItem: string ) {
+    if(searchItem == '') {
+      this.ctrl.getFaqs();
+    } else {
+      this.ctrl.getFaqsByTitle(searchItem);
+    }
+  }
 }

@@ -116,7 +116,7 @@ export class ControllerService {
       }
     );
   }
-    
+
   //CRUD FAQ
   getFaqs() {
 
@@ -127,7 +127,24 @@ export class ControllerService {
     ).subscribe(
         (data) => {
           this.faqs = data;
-          
+
+        },
+        (error) => {
+          this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+        }
+      );
+
+    return false;
+  }
+
+  getFaqsByTitle( searchItem: string ) {
+    this.http.get<FaqResponse[]>(
+      this.auth.api + '/faq/busca-por-titulo/' + searchItem, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+        (data) => {
+          this.faqs = data;
         },
         (error) => {
           this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
@@ -178,7 +195,7 @@ export class ControllerService {
     if(!faqInfo.id) {
       this.alerts.showAlertWarning({ title: "Atenção", message: "Não foi possível atualizar a FAQ." });
     }
-    
+
     const requestPkg: Faq = {
       id: faqInfo.id,
       tituloPergunta: faqInfo.tituloPergunta,
@@ -205,7 +222,7 @@ export class ControllerService {
     if (classId == '') {
       this.alerts.showAlertWarning({ title: 'Warning:', message: 'Needed field empty' });
     }
-   
+
     this.http.get<AulaResponse[]>(
       this.auth.api + '/aulas' + '/aluno/' + this.auth.userLogged!.userId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
@@ -231,7 +248,7 @@ export class ControllerService {
           newArr.push(tempArr)
           tempArr = [];
         }
-  
+
 
         this.AulaById = newArr;
       },
