@@ -1,18 +1,13 @@
 export interface Faq {
+    id?: number,
+    tituloPergunta: string,
+    respostaPergunta: string;
+    funcionario?: { id: number };
+  }
 
-    tituloPergunta: string,
-    respostaPergunta: string;
-  }
-  
   export interface FaqResponse {
-    id: number;
-    tituloPergunta: string,
-    respostaPergunta: string;
-  }
-  
-  export interface FaqRequest {
+    id: number,
     tituloPergunta: string,
     respostaPergunta: string;
     funcionario: { id: number };
   }
-  

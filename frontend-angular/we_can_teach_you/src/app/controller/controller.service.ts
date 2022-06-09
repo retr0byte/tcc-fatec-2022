@@ -7,7 +7,7 @@ import { AlertsService } from './alerts.service';
 import { Professor } from '../model/Professor';
 import { Marcacoes, MarcacoesRequest, MarcacoesResponse } from '../model/Marcacoes';
 import { Aula, AulaResponse } from '../model/Aula';
-import { Faq, FaqRequest, FaqResponse } from 'src/app/model/Faq';
+import { Faq, FaqResponse } from 'src/app/model/Faq';
 import { Category, CategoryResponse } from '../model/Category';
 
 @Injectable({
@@ -127,6 +127,7 @@ export class ControllerService {
     ).subscribe(
         (data) => {
           this.faqs = data;
+          
         },
         (error) => {
           this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
@@ -138,13 +139,13 @@ export class ControllerService {
 
   postFaq(faqInfo: Faq){
 
-      const requestPkg: FaqRequest = {
+      const requestPkg: Faq = {
         tituloPergunta: faqInfo.tituloPergunta,
         respostaPergunta: faqInfo.respostaPergunta,
         funcionario: { id: parseInt(this.auth.userLogged!.userId) },
       };
 
-      this.http.post<FaqResponse>(
+      this.http.post<Faq>(
         this.auth.api + '/faq', requestPkg, {
           headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
         }
@@ -162,6 +163,32 @@ export class ControllerService {
     this.http.delete(
       this.auth.api + '/faq/' + faqId, {
         headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token }
+      }
+    ).subscribe(
+      (data) => {
+        this.getFaqs();
+      },
+      (error) => {
+        this.alerts.showAlertDanger({ title: error.statusText, message: error.message });
+      }
+    );
+  }
+
+  putFaq(faqInfo: Faq) {
+    if(!faqInfo.id) {
+      this.alerts.showAlertWarning({ title: "Atenção", message: "Não foi possível atualizar a FAQ." });
+    }
+    
+    const requestPkg: Faq = {
+      id: faqInfo.id,
+      tituloPergunta: faqInfo.tituloPergunta,
+      respostaPergunta: faqInfo.respostaPergunta,
+      funcionario: { id: parseInt(this.auth.userLogged!.userId) },
+    };
+
+    this.http.put<FaqResponse>(
+      this.auth.api + '/faq/' , requestPkg, {
+        headers: { 'Authorization': 'Bearer ' + this.auth.userLogged!.token },
       }
     ).subscribe(
       (data) => {

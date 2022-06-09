@@ -3,7 +3,7 @@ import { AlertsService } from 'src/app/controller/alerts.service';
 import { AuthService } from 'src/app/controller/auth.service';
 import { ControllerService } from 'src/app/controller/controller.service';
 
-import { Faq, FaqRequest } from 'src/app/model/Faq';
+import { Faq } from 'src/app/model/Faq';
 
 
 @Component({
@@ -12,7 +12,6 @@ import { Faq, FaqRequest } from 'src/app/model/Faq';
   styleUrls: ['./faq.component.css']
 })
 export class FaqComponent implements OnInit {
-  faqs: Faq | null = null;
   pergunta: string = '';
   resposta: string = '';
 
@@ -23,7 +22,6 @@ export class FaqComponent implements OnInit {
 
   isVisible: boolean = false;
 
-  isEdit: boolean = false;
 
   
 
@@ -35,11 +33,29 @@ export class FaqComponent implements OnInit {
     this.isVisible = !this.isVisible;
   }
 
-  showEdit(t: string): void{
-    console.log(t);
-    // if(pega != null){
-    //   pega.isEdit = false;
-    // }
+  showEdit(index: number) {
+    const el = document.getElementById(`faq-item-${index}`) as HTMLElement;
+    const editWrapper = el.querySelector(`.edit-wrapper`) as HTMLElement;
+    const staticWrapper = el.querySelector(`.static-wrapper`) as HTMLElement;
+
+    const btnEdit = el.querySelector(`.btn-edit`) as HTMLElement;
+    const btnSave = el.querySelector(`.btn-save`) as HTMLElement;
+
+    if(el.classList.contains("static")) {
+      editWrapper!.style.display = "flex";
+      staticWrapper!.style.display = "none";
+      btnEdit!.style.display = "none";
+      btnSave!.style.display = "flex";
+      el.classList.remove("static");
+
+    } else {
+      editWrapper!.style.display = "none";
+      staticWrapper!.style.display = "flex";
+      btnEdit!.style.display = "flex";
+      btnSave!.style.display = "none";
+      el.classList.add("static");
+
+    }
     
   }
 
