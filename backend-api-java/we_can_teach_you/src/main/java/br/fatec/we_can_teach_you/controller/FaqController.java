@@ -45,6 +45,11 @@ public class FaqController implements ControllerInterface<FaqDTO>{
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @GetMapping("/busca-por-titulo/{tituloPergunta}")
+    public ResponseEntity<List<FaqDTO>> getByAlunoAndAula(@PathVariable String tituloPergunta) {
+        return ResponseEntity.ok(service.findFaqByTituloPergunta(tituloPergunta));
+	}
+
     @Override
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'FUNCIONARIO')")

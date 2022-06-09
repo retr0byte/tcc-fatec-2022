@@ -40,6 +40,10 @@ public class FaqService implements ServiceInterface<FaqDTO>{
         return mapper.toDTO(repository.findAll());
     }
 
+    public List<FaqDTO> findFaqByTituloPergunta(String tituloPergunta) {
+        return mapper.toDTO(repository.findByTituloPergunta(tituloPergunta));
+    }
+
     @Override
     public boolean update(FaqDTO obj) {
         if (repository.existsById(obj.getId())) {
